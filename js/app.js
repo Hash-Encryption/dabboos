@@ -372,8 +372,8 @@ function playHeroEntrance() {
       '-=0.7'
     )
     .fromTo('#hero-3d-title',
-      { y: 40, opacity: 0, scale: 0.85 },
-      { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: 'back.out(1.8)', overwrite: 'auto' },
+      { xPercent: -50, y: 40, opacity: 0, scale: 0.85 },
+      { xPercent: -50, y: 0, opacity: 1, scale: 1, duration: 0.7, ease: 'back.out(1.8)', overwrite: 'auto' },
       '-=0.6'
     )
     .fromTo('.hero-badge-sticker',
@@ -394,6 +394,10 @@ function initHeroInteractions() {
   const eyePupils = document.querySelectorAll('.hero-eye-pupil');
 
   if (!heroContainer) return;
+
+  // Strict Initial Centering for Hero Overlays
+  gsap.set('#hero-3d-title', { xPercent: -50, left: '50%' });
+  gsap.set('#hero-eyes-container', { xPercent: -50, left: '50%' });
 
   // Eyes mouse tracking (desktop only)
   if (window.matchMedia && !window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
@@ -466,6 +470,7 @@ function initHeroInteractions() {
         end: 'bottom top',
         scrub: 1
       },
+      xPercent: -50,
       y: 130,
       scale: 0.96,
       overwrite: 'auto'
@@ -475,8 +480,16 @@ function initHeroInteractions() {
   mm.add('(max-width: 768px), (pointer: coarse)', () => {
     // Mobile Touch Devices: Strictly preserve static, hardware-accelerated transform
     // to eliminate 100% of scroll-scrub vibration and layout jitter.
-    gsap.set(['#hero-bg-text', heroBurger, '#hero-3d-title'], {
+    gsap.set(['#hero-bg-text', heroBurger], {
       clearProps: 'transform'
+    });
+    gsap.set('#hero-3d-title', {
+      xPercent: -50,
+      left: '50%'
+    });
+    gsap.set('#hero-eyes-container', {
+      xPercent: -50,
+      left: '50%'
     });
   });
 }

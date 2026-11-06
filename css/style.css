@@ -40,10 +40,8 @@ body.is-loading {
 /* Hardware-Accelerated Floating Elements */
 #hero-section,
 #hero-burger-centerpiece,
-#hero-3d-title,
 .hero-badge-sticker,
 .hero-corner-card,
-#hero-eyes-container,
 .hero-eye-pupil,
 #mascot-fry,
 #mascot-chili,
@@ -52,6 +50,23 @@ body.is-loading {
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+}
+
+/* Explicit Centering for Hero Overlays */
+#hero-3d-title {
+  left: 50% !important;
+  transform: translate3d(-50%, 0, 0) !important;
+  width: 100% !important;
+  text-align: center !important;
+  will-change: transform;
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+#hero-eyes-container {
+  left: 50% !important;
+  transform: translate3d(-50%, 0, 0) !important;
+  will-change: transform;
 }
 
 /* Typography Classes */

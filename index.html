@@ -328,47 +328,51 @@
         <!-- Centerpiece: Signature Crispy Burger Cutout (Clean Cutout, NO dark box) -->
         <div class="relative z-10 flex flex-col items-center justify-center my-auto px-4">
           
-          <div id="hero-burger-centerpiece" class="relative max-w-[320px] sm:max-w-md md:max-w-xl w-full mx-auto cursor-pointer group flex flex-col items-center justify-center min-h-[220px] sm:min-h-[320px] md:min-h-[440px]">
+          <div id="hero-burger-centerpiece" class="relative max-w-[320px] sm:max-w-md md:max-w-xl w-full mx-auto cursor-pointer group flex flex-col items-center justify-center">
             
-            <!-- Rising Steam Puffs -->
-            <div class="absolute -top-8 md:-top-12 left-1/2 -translate-x-1/2 flex gap-6 md:gap-8 pointer-events-none z-20" aria-hidden="true">
-              <span class="text-2xl md:text-3xl opacity-50 animate-bounce" style="animation-duration: 2.2s;">♨️</span>
-              <span class="text-3xl md:text-4xl opacity-70 animate-bounce" style="animation-duration: 1.8s; animation-delay: 0.3s;">♨️</span>
-              <span class="text-2xl md:text-3xl opacity-50 animate-bounce" style="animation-duration: 2.5s; animation-delay: 0.6s;">♨️</span>
-            </div>
+            <div class="relative inline-flex flex-col items-center justify-center">
 
-            <!-- Cartoon Googly Eyes attached cleanly to top bun -->
-            <div id="hero-eyes-container" class="absolute -top-5 md:-top-8 left-1/2 -translate-x-1/2 flex items-center gap-2.5 md:gap-3 z-30 pointer-events-none">
-              <div class="hero-eye-white relative w-10 h-10 md:w-16 md:h-16 rounded-full bg-white border-3 md:border-4 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center overflow-hidden">
-                <div class="hero-eye-pupil w-5 h-5 md:w-8 md:h-8 rounded-full bg-black relative flex items-center justify-center">
-                  <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white absolute top-1 right-1"></span>
+              <!-- Rising Steam Puffs -->
+              <div class="absolute -top-7 md:-top-10 left-1/2 -translate-x-1/2 flex gap-5 md:gap-7 pointer-events-none z-20" aria-hidden="true">
+                <span class="text-xl md:text-2xl opacity-50 animate-bounce" style="animation-duration: 2.2s;">♨️</span>
+                <span class="text-2xl md:text-3xl opacity-70 animate-bounce" style="animation-duration: 1.8s; animation-delay: 0.3s;">♨️</span>
+                <span class="text-xl md:text-2xl opacity-50 animate-bounce" style="animation-duration: 2.5s; animation-delay: 0.6s;">♨️</span>
+              </div>
+
+              <!-- Cartoon Googly Eyes attached cleanly to top bun -->
+              <div id="hero-eyes-container" class="absolute top-[3%] md:top-[4%] left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-2.5 z-30 pointer-events-none">
+                <div class="hero-eye-white relative w-9 h-9 md:w-14 md:h-14 rounded-full bg-white border-3 md:border-4 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center overflow-hidden">
+                  <div class="hero-eye-pupil w-4.5 h-4.5 md:w-7 md:h-7 rounded-full bg-black relative flex items-center justify-center">
+                    <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white absolute top-1 right-1"></span>
+                  </div>
+                </div>
+                <div class="hero-eye-white relative w-9 h-9 md:w-14 md:h-14 rounded-full bg-white border-3 md:border-4 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center overflow-hidden">
+                  <div class="hero-eye-pupil w-4.5 h-4.5 md:w-7 md:h-7 rounded-full bg-black relative flex items-center justify-center">
+                    <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white absolute top-1 right-1"></span>
+                  </div>
                 </div>
               </div>
-              <div class="hero-eye-white relative w-10 h-10 md:w-16 md:h-16 rounded-full bg-white border-3 md:border-4 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center overflow-hidden">
-                <div class="hero-eye-pupil w-5 h-5 md:w-8 md:h-8 rounded-full bg-black relative flex items-center justify-center">
-                  <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white absolute top-1 right-1"></span>
+
+              <!-- Seamless Cutout Image without dark box (78vw on mobile, scaled on desktop) -->
+              <img 
+                src="assets/images/hero-burger-cutout.png" 
+                alt="Dabboos Signature Crispy Double Burger" 
+                decoding="async"
+                class="w-[78vw] max-w-[280px] sm:max-w-[380px] md:max-w-[500px] h-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.28)] transform group-hover:scale-105 transition-transform duration-500 relative z-20 block mx-auto"
+              >
+
+              <!-- 3D Extruded Overlay Title: DABBOOS overlapping bottom bun (Strictly Centered) -->
+              <div id="hero-3d-title" class="absolute -bottom-6 sm:-bottom-10 left-1/2 -translate-x-1/2 w-full text-center z-30 pointer-events-none">
+                <h2 class="dabboos-3d-title font-display text-[clamp(3.2rem,15vw,5.5rem)] md:text-[11rem] leading-none tracking-tight select-none text-center" dir="ltr">
+                  DABBOOS
+                </h2>
+                <div class="inline-block mt-1 sm:mt-2 text-center">
+                  <span data-i18n="hero_marquee_badge" class="font-arabic font-extrabold text-xs sm:text-base md:text-lg text-dabboos-blue bg-white/95 border-2 border-black px-3 sm:px-4 py-0.5 sm:py-1 rounded-full shadow-[2px_2px_0px_#000]">
+                    دبوس — ملوك القرمشة والنكهة النارية!
+                  </span>
                 </div>
               </div>
-            </div>
 
-            <!-- Seamless Cutout Image without dark box (78vw on mobile, scaled on desktop) -->
-            <img 
-              src="assets/images/hero-burger-cutout.png" 
-              alt="Dabboos Signature Crispy Double Burger" 
-              decoding="async"
-              class="w-[78vw] max-w-[280px] sm:max-w-[380px] md:max-w-[500px] h-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.28)] transform group-hover:scale-105 transition-transform duration-500 relative z-20 my-[-15px] md:my-0"
-            >
-
-            <!-- 3D Extruded Overlay Title: DABBOOS overlapping bottom bun -->
-            <div id="hero-3d-title" class="absolute -bottom-7 sm:-bottom-12 left-1/2 -translate-x-1/2 w-full text-center z-30 pointer-events-none mb-4 md:mb-6">
-              <h2 class="dabboos-3d-title font-display text-[clamp(3.2rem,15vw,5.5rem)] md:text-[11rem] leading-none tracking-tight select-none" dir="ltr">
-                DABBOOS
-              </h2>
-              <div class="inline-block mt-1 sm:mt-2">
-                <span data-i18n="hero_marquee_badge" class="font-arabic font-extrabold text-xs sm:text-base md:text-lg text-dabboos-blue bg-white/95 border-2 border-black px-3 sm:px-4 py-0.5 sm:py-1 rounded-full shadow-[2px_2px_0px_#000]">
-                  دبوس — ملوك القرمشة والنكهة النارية!
-                </span>
-              </div>
             </div>
 
           </div>
