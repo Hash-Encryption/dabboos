@@ -1,0 +1,697 @@
+/* DABBOOS (دبوس) - Luxury Awwwards-style Interactive Restaurant Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bungee&family=Cairo:wght@600;700;800;900&family=Readex+Pro:wght@400;500;600;700;800;900&family=Tajawal:wght@500;700;800;900&family=Space+Grotesk:wght@500;700;800&display=swap');
+
+:root {
+  --color-red: #E62419;
+  --color-blue: #0A1996;
+  --color-cream: #F9F6F0;
+  --color-yellow: #F5C518;
+  --color-pattern-blue: #1528B8;
+  --color-dark: #111111;
+}
+
+/* Base resets & typography */
+html, body {
+  overflow-x: clip !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  margin: 0;
+  padding: 0;
+  background-color: #F9F6F0;
+  color: var(--color-dark);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scroll Lock during Preloader */
+body.is-loading {
+  overflow: hidden !important;
+  height: 100svh !important;
+  touch-action: none !important;
+}
+
+/* iOS Safari Hero Anti-Jitter Lock */
+#hero-section {
+  min-height: 100svh !important;
+  contain: layout paint;
+}
+
+/* Hardware-Accelerated Floating Elements */
+#hero-section,
+#hero-burger-centerpiece,
+#hero-3d-title,
+.hero-badge-sticker,
+.hero-corner-card,
+#hero-eyes-container,
+.hero-eye-pupil,
+#mascot-fry,
+#mascot-chili,
+.parallax-ingredient {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Typography Classes */
+.font-display {
+  font-family: 'Anton', 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.font-bebas {
+  font-family: 'Bebas Neue', 'Anton', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-bungee {
+  font-family: 'Bungee', cursive;
+}
+
+.font-arabic {
+  font-family: 'Cairo', 'Tajawal', 'Readex Pro', -apple-system, sans-serif;
+  letter-spacing: normal !important;
+}
+
+/* Strict Direction & Typography Rules */
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="ltr"] {
+  direction: ltr;
+}
+
+html[dir="rtl"] .font-arabic {
+  font-family: 'Cairo', 'Tajawal', 'Readex Pro', -apple-system, sans-serif;
+  letter-spacing: normal !important;
+}
+
+html[dir="ltr"] .font-arabic {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  letter-spacing: 0.01em;
+}
+
+/* Explicit direction overrides */
+[dir="rtl"] {
+  direction: rtl;
+  unicode-bidi: plaintext;
+}
+
+[dir="ltr"] {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* ==========================================================================
+   Decorative English Display Backgrounds - Direction Isolation
+   Strictly isolated in direction: ltr !important so they NEVER drift right
+   or clip horizontally regardless of html[dir="rtl"] or html[dir="ltr"].
+   ========================================================================== */
+#hero-bg-text,
+.footer-giant-logo,
+#hero-3d-title,
+.dabboos-3d-title,
+.decorative-display-ltr {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  text-align: center !important;
+  box-sizing: border-box;
+}
+
+#hero-bg-text {
+  width: 100%;
+  max-width: 100vw;
+  overflow: visible;
+  letter-spacing: -0.04em;
+}
+
+/* 3D Extruded Retro Bubble Font for "DABBOOS" */
+.dabboos-3d-title {
+  font-family: 'Bungee', 'Anton', sans-serif;
+  color: var(--color-yellow);
+  -webkit-text-stroke: 3px #111111;
+  text-shadow:
+    2px 2px 0px var(--color-red),
+    4px 4px 0px var(--color-red),
+    6px 6px 0px var(--color-red),
+    8px 8px 0px var(--color-blue),
+    10px 10px 0px var(--color-blue),
+    12px 12px 0px #000000,
+    14px 14px 20px rgba(0, 0, 0, 0.35);
+  transform: perspective(600px) rotateX(4deg);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), text-shadow 0.3s ease;
+}
+
+.dabboos-3d-title:hover {
+  transform: perspective(600px) rotateX(0deg) scale(1.03);
+  text-shadow:
+    3px 3px 0px var(--color-red),
+    6px 6px 0px var(--color-red),
+    9px 9px 0px var(--color-blue),
+    12px 12px 0px var(--color-blue),
+    15px 15px 0px #000000,
+    18px 18px 25px rgba(230, 36, 25, 0.5);
+}
+
+/* Guaranteed Zero-Clipping Giant Footer Logo (Pure Responsive CSS) */
+.footer-giant-logo {
+  font-family: 'Anton', 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(5rem, 18vw, 19rem);
+  font-weight: 900;
+  line-height: 1.15; /* CRITICAL: prevents top/bottom clipping */
+  padding: 20px 4vw; /* CRITICAL: breathing room for thick stroke */
+  margin: 0 auto;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke: 8px var(--color-red);
+  paint-order: stroke fill;
+  letter-spacing: 0.02em;
+  user-select: none;
+  overflow: visible !important;
+  display: block;
+  width: 100%;
+  pointer-events: auto;
+  transition: color 0.3s ease;
+}
+
+.footer-giant-logo:hover {
+  color: rgba(230, 36, 25, 0.08);
+}
+
+@media (max-width: 768px) {
+  .footer-giant-logo {
+    font-size: clamp(2.8rem, 14vw, 5rem) !important;
+    -webkit-text-stroke: 4.5px var(--color-red) !important;
+    line-height: 1.15;
+    padding: 10px 2vw;
+  }
+}
+
+/* 3D Outline for Giant Footer Typography (Fallback) */
+.dabboos-footer-svg text {
+  fill: transparent;
+  stroke: var(--color-red);
+  stroke-width: 4px;
+  user-select: none;
+  transition: fill 0.3s ease, stroke-width 0.3s ease;
+}
+
+.dabboos-footer-svg:hover text {
+  fill: rgba(230, 36, 25, 0.08);
+  stroke-width: 5px;
+}
+
+/* Neo-Brutalist Sticker Badges (Proportionally Scaled) */
+.sticker-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 4px 12px;
+  font-family: 'Bungee', 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  border: 2px solid #111111;
+  box-shadow: 2px 2px 0px #111111;
+  border-radius: 9999px;
+  font-weight: 800;
+  white-space: nowrap;
+  user-select: none;
+  transform: rotate(-2deg);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .sticker-badge {
+    font-size: 12px;
+    padding: 5px 14px;
+    border-width: 2px;
+    box-shadow: 2.5px 2.5px 0px #111111;
+  }
+}
+
+.sticker-badge:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 3px 3px 0px #111111;
+}
+
+.sticker-badge-yellow {
+  background-color: var(--color-yellow);
+  color: #111111;
+}
+
+.sticker-badge-red {
+  background-color: var(--color-red);
+  color: #ffffff;
+}
+
+.sticker-badge-blue {
+  background-color: var(--color-blue);
+  color: #ffffff;
+}
+
+.sticker-badge-cream {
+  background-color: var(--color-cream);
+  color: var(--color-red);
+}
+
+/* Brutalist Button (Proportionally Scaled & Mobile Refined) */
+.btn-dabboos {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-family: 'Bungee', 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background-color: var(--color-red);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: 2px solid #111111;
+  box-shadow: 2px 2px 0px #111111;
+  cursor: pointer;
+  font-weight: 800;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-dabboos::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-dabboos:hover::after {
+  left: 100%;
+}
+
+.btn-dabboos:hover {
+  transform: translate(-1.5px, -1.5px);
+  box-shadow: 3.5px 3.5px 0px #111111;
+  background-color: #d11e14;
+}
+
+.btn-dabboos:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #111111;
+}
+
+.btn-dabboos-yellow {
+  background-color: var(--color-yellow);
+  color: #111111;
+  border: 2px solid #111111;
+  box-shadow: 2px 2px 0px #111111;
+  font-size: 13px;
+  padding: 8px 16px;
+}
+  color: #111111;
+}
+.btn-dabboos-yellow:hover {
+  background-color: #e5b610;
+}
+
+/* Subtle Royal Blue Arabic Calligraphy/Flame Pattern */
+.bg-dabboos-pattern {
+  background-color: var(--color-blue);
+  background-image: radial-gradient(var(--color-pattern-blue) 1.5px, transparent 1.5px),
+                    radial-gradient(var(--color-pattern-blue) 1.5px, var(--color-blue) 1.5px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+  position: relative;
+}
+
+.bg-dabboos-pattern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 15 C65 30 80 40 80 60 C80 75 70 85 60 85 C50 85 40 75 40 60 C40 45 52 35 60 15 Z' fill='%231528b8' fill-opacity='0.18'/%3E%3Ctext x='20' y='110' font-family='Arial' font-size='12' font-weight='900' fill='%231528b8' fill-opacity='0.14'%3E%D8%AF%D8%A8%D9%88%D8%B3%3C/text%3E%3Ctext x='75' y='110' font-family='Arial' font-size='9' font-weight='900' fill='%231528b8' fill-opacity='0.12'%3EDABBOOS%3C/text%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* Polaroid Card Styles */
+.polaroid-card {
+  background-color: #ffffff;
+  padding: 14px 14px 28px 14px;
+  border-radius: 4px;
+  border: 3px solid #111111;
+  box-shadow: 8px 12px 24px rgba(0, 0, 0, 0.18), 4px 4px 0px #111111;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+  transform-origin: center center;
+  cursor: pointer;
+}
+
+.polaroid-card:hover {
+  transform: translateY(-12px) scale(1.05) rotate(0deg) !important;
+  box-shadow: 16px 24px 36px rgba(0, 0, 0, 0.25), 6px 6px 0px #111111;
+  z-index: 30 !important;
+}
+
+/* Minimalist High-Conversion Menu Product Cards */
+.menu-product-card {
+  background-color: #ffffff;
+  border: 3px solid #111111;
+  border-radius: 1.25rem;
+  box-shadow: 4px 4px 0px #111111;
+  overflow: hidden;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-product-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px var(--color-red);
+}
+
+/* Category Tab Pill */
+.category-tab-btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px;
+  border: 2px solid #111111;
+  background-color: #ffffff;
+  color: #111111;
+  font-family: 'Readex Pro', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 3px 3px 0px #111111;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category-tab-btn:hover {
+  background-color: var(--color-yellow);
+  transform: translate(-1px, -1px);
+}
+
+.category-tab-btn.active {
+  background-color: var(--color-red);
+  color: #ffffff;
+  box-shadow: 4px 4px 0px #111111;
+  transform: translate(-2px, -2px);
+}
+
+/* Floating retro animations (Hardware-Accelerated translate3d) */
+@keyframes bobbingSlow {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(3deg);
+  }
+}
+
+@keyframes bobbingFast {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0) rotate(-2deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(4deg);
+  }
+}
+
+.animate-bob-slow {
+  animation: bobbingSlow 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-bob-fast {
+  animation: bobbingFast 3.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Subtle Film Grain Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Interactive Cursor (Hardware Accelerated) */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-red);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999999;
+  will-change: transform;
+  transform: translate3d(-50%, -50%, 0);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+}
+
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  border: 2.5px solid var(--color-red);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999998;
+  will-change: transform;
+  transform: translate3d(-50%, -50%, 0);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.cursor-hover .custom-cursor-dot {
+  width: 22px;
+  height: 22px;
+  background-color: var(--color-yellow);
+}
+
+.cursor-hover .custom-cursor-follower {
+  width: 65px;
+  height: 65px;
+  border-color: var(--color-yellow);
+  background-color: rgba(245, 197, 24, 0.15);
+}
+
+/* Disable Custom Mouse Follower on Touch / Mobile Devices */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-follower {
+    display: none !important;
+  }
+}
+
+/* STRICT PRELOADER: 100% Full-Screen Lock, Zero Gap, High Z-Index */
+#preloader {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100svh;
+  z-index: 99999;
+  background-color: var(--color-red) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  will-change: transform;
+}
+
+#preloader-content {
+  position: relative;
+  z-index: 100010 !important;
+}
+
+.preloader-wave-curtain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#preloader-curtain-yellow {
+  z-index: 100001;
+}
+
+#preloader-curtain-blue {
+  z-index: 100002;
+}
+
+#preloader-curtain-red {
+  z-index: 100003;
+}
+
+/* Matter.js Physics Canvas Container */
+#physics-canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  z-index: 5;
+}
+
+#physics-canvas-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Wavy SVG Dividers */
+.liquid-wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  position: relative;
+  z-index: 15;
+}
+
+.liquid-wave-divider svg {
+  display: block;
+  width: calc(100% + 1.3px);
+  height: auto;
+}
+
+/* Mobile-First Fluid Responsiveness (< 768px) */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: clip !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .sticker-badge {
+    font-size: 10.5px !important;
+    padding: 3.5px 10px !important;
+    transform: rotate(-1.5deg);
+  }
+
+  .dabboos-3d-title {
+    -webkit-text-stroke: 2px #111111;
+    text-shadow:
+      1.5px 1.5px 0px var(--color-red),
+      3px 3px 0px var(--color-red),
+      4.5px 4.5px 0px var(--color-blue),
+      6px 6px 0px #000000;
+  }
+
+  /* Polaroid Cards on Mobile: Vertical Stack with 88vw width */
+  .polaroid-card {
+    transform: none !important;
+    width: 88vw !important;
+    max-width: 380px !important;
+    margin: 0 auto 1.5rem auto !important;
+    padding: 10px 10px 18px 10px !important;
+    box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.15), 3px 3px 0px #111 !important;
+  }
+
+  .polaroid-card:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+  }
+
+  /* Mascot & Ingredient Icons on Mobile: Downscaled to 36px-44px at corners */
+  #mascot-fry,
+  #mascot-chili {
+    max-width: 44px !important;
+    max-height: 44px !important;
+  }
+
+  #mascot-fry > div,
+  #mascot-chili > div {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .parallax-ingredient {
+    max-width: 42px !important;
+    max-height: 42px !important;
+  }
+
+  /* Compact 2-Column Mobile Delivery Menu Cards */
+  .menu-product-card {
+    border-radius: 0.85rem !important;
+    border-width: 2px !important;
+    box-shadow: 2.5px 2.5px 0px #111 !important;
+    padding: 0.5rem !important;
+  }
+
+  .category-tab-btn {
+    padding: 0.4rem 0.85rem !important;
+    font-size: 0.78rem !important;
+    box-shadow: 2px 2px 0px #111 !important;
+  }
+}
+
+/* ==========================================================================
+   iOS Safe-Area & Layering Protection
+   ========================================================================== */
+#dabboos-toast {
+  bottom: calc(20px + env(safe-area-inset-bottom, 20px)) !important;
+  inset-inline-start: 16px !important;
+}
+
+#cart-floating-pill {
+  bottom: calc(20px + env(safe-area-inset-bottom, 20px)) !important;
+  inset-inline-end: 16px !important;
+}
+
+#cart-drawer > div:last-child {
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 20px)) !important;
+}
+
+/* Paper Airplane & Flagship Card Layering Isolation */
+#flight-path-svg,
+#travel-airplane {
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+#flagship-card {
+  position: relative !important;
+  z-index: 10 !important;
+  pointer-events: auto !important;
+}
+
+/* Menu Product Image Aspect Ratio & Non-Truncating Titles */
+.menu-product-card img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+}
+
+/* Direction-adaptive text alignment */
+html[dir="rtl"] .i18n-dir-align {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="ltr"] .i18n-dir-align {
+  text-align: left;
+  direction: ltr;
+}
