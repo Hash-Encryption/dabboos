@@ -52,6 +52,31 @@ body.is-loading {
   backface-visibility: hidden;
 }
 
+.hero-eye-white {
+  width: 36px !important;
+  height: 36px !important;
+}
+.hero-eye-pupil {
+  width: 18px !important;
+  height: 18px !important;
+  background-color: #111111 !important;
+  border-radius: 9999px !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+@media (min-width: 768px) {
+  .hero-eye-white {
+    width: 56px !important;
+    height: 56px !important;
+  }
+  .hero-eye-pupil {
+    width: 26px !important;
+    height: 26px !important;
+  }
+}
+
 /* Explicit Centering for Hero Overlays */
 #hero-3d-title {
   left: 50% !important;
@@ -565,7 +590,7 @@ html[dir="ltr"] .font-arabic {
   }
 }
 
-/* STRICT PRELOADER: 100% Full-Screen Lock, Zero Gap, High Z-Index */
+/* LUXURY NEO-BRUTALIST PRELOADER: 100% Full-Screen Lock, Zero Gap, High Z-Index */
 #preloader {
   position: fixed;
   inset: 0;
@@ -573,7 +598,7 @@ html[dir="ltr"] .font-arabic {
   height: 100%;
   min-height: 100svh;
   z-index: 99999;
-  background-color: var(--color-red) !important;
+  background-color: #B81910 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -582,9 +607,43 @@ html[dir="ltr"] .font-arabic {
   will-change: transform;
 }
 
+.preloader-bg-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.5) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+.preloader-radial-glow {
+  background: radial-gradient(circle at center, rgba(230, 36, 25, 0.92) 0%, rgba(138, 14, 8, 0.98) 100%);
+}
+
 #preloader-content {
   position: relative;
   z-index: 100010 !important;
+}
+
+.preloader-progress-fill {
+  background-color: var(--color-yellow);
+  background-image: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 20px 20px;
+  animation: preloaderStripes 0.8s linear infinite;
+}
+
+@keyframes preloaderStripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 0;
+  }
 }
 
 .preloader-wave-curtain {

@@ -167,61 +167,73 @@ function initCustomCursor() {
 }
 
 /* ==========================================================================
-   3. Strict Preloader: 100dvh Lock, Clean Assembly, Zero Peeking
+   3. Luxury Neo-Brutalist Preloader: Kitchen Ticket Assembly Experience
    ========================================================================== */
 function initPreloader() {
   const preloader = document.getElementById('preloader');
   const percentText = document.getElementById('preloader-percent');
-  const statusText = document.getElementById('preloader-status');
+  const statusAr = document.getElementById('preloader-status-ar');
+  const statusEn = document.getElementById('preloader-status-en');
   const progressBar = document.getElementById('preloader-progress-bar');
+  const eyes = document.getElementById('preloader-eyes');
 
-  const layers = [
-    { el: '#layer-bun-bottom', pct: 0 },
-    { el: '#layer-patty', pct: 25 },
-    { el: '#layer-cheese', pct: 45 },
-    { el: '#layer-lettuce', pct: 65 },
-    { el: '#layer-sauce', pct: 80 },
-    { el: '#layer-bun-top', pct: 90 },
-    { el: '#layer-eyes', pct: 96 }
-  ];
-
-  const messages = [
-    { threshold: 0, text: 'جاري تحضير القرمشة... — PREPARING THE CRUNCH' },
-    { threshold: 30, text: 'خلطة الـ 12 بهار السرية... — INFUSING 12-SPICE BRINE' },
-    { threshold: 65, text: 'طبقات الشيدر الذائبة... — MELTING CHEDDAR LAYERS' },
-    { threshold: 92, text: 'جاهز لأقوى تجربة طعم! — READY TO DABBOOS!' }
+  const steps = [
+    {
+      threshold: 0,
+      ar: '🔥 غمر الدجاج الطازج في تتبيلة الـ 12 بهار السرية...',
+      en: 'INFUSING FRESH CHICKEN IN 12 SECRET SPICES'
+    },
+    {
+      threshold: 25,
+      ar: '🍗 القلي في الزيت الساخن لدرجة القرمشة الذهبية القصوى...',
+      en: 'CRISPING TO GOLDEN CRUNCHY PERFECTION'
+    },
+    {
+      threshold: 52,
+      ar: '🧀 تحمير خبز البريوش وتذويب طبقات الشيدر المعتقة...',
+      en: 'TOASTING BRIOCHE & MELTING AGED CHEDDAR'
+    },
+    {
+      threshold: 78,
+      ar: '🌶️ سكب صوص دبّوس الناري وتغليف البوكس الحار...',
+      en: 'DRIZZLING FIERY DABBOOS SAUCE & PACKING'
+    },
+    {
+      threshold: 95,
+      ar: '🚀 جاهز للانقضاض! مرحباً بك في عالم دبّوس!',
+      en: 'READY TO DEVOUR! WELCOME TO DABBOOS!'
+    }
   ];
 
   let progress = { value: 0 };
-  let currentMsgIdx = 0;
+  let currentStepIdx = -1;
 
   window.scrollTo(0, 0);
 
   gsap.to(progress, {
     value: 100,
-    duration: 1.8,
+    duration: 2.0,
     ease: 'power2.inOut',
     onUpdate: () => {
       const currentVal = Math.round(progress.value);
       if (percentText) percentText.textContent = `${currentVal}%`;
       if (progressBar) progressBar.style.width = `${currentVal}%`;
 
-      layers.forEach((layer) => {
-        const elem = document.querySelector(layer.el);
-        if (elem && currentVal >= layer.pct && !elem.classList.contains('dropped')) {
-          elem.classList.add('dropped');
-          gsap.fromTo(elem, 
-            { y: -30, opacity: 0, scale: 0.9 }, 
-            { y: 0, opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }
-          );
-        }
-      });
+      // Micro-animation for cartoon googly eyes
+      if (eyes && currentVal % 18 === 0) {
+        gsap.to(eyes, { y: -2, duration: 0.12, yoyo: true, repeat: 1 });
+      }
 
-      for (let i = messages.length - 1; i >= 0; i--) {
-        if (currentVal >= messages[i].threshold && currentMsgIdx !== i) {
-          currentMsgIdx = i;
-          if (statusText) {
-            statusText.textContent = messages[i].text;
+      for (let i = steps.length - 1; i >= 0; i--) {
+        if (currentVal >= steps[i].threshold && currentStepIdx !== i) {
+          currentStepIdx = i;
+          if (statusAr) {
+            statusAr.textContent = steps[i].ar;
+            gsap.fromTo(statusAr, { opacity: 0.6, y: 2 }, { opacity: 1, y: 0, duration: 0.2 });
+          }
+          if (statusEn) {
+            statusEn.textContent = steps[i].en;
+            gsap.fromTo(statusEn, { opacity: 0.6, y: 2 }, { opacity: 1, y: 0, duration: 0.2 });
           }
           break;
         }
@@ -230,7 +242,7 @@ function initPreloader() {
     onComplete: () => {
       setTimeout(() => {
         exitPreloader();
-      }, 150);
+      }, 180);
     }
   });
 
@@ -260,9 +272,14 @@ function initPreloader() {
 
     exitTl
       .to(preloaderContent, {
+        scale: 1.05,
+        duration: 0.15,
+        ease: 'power1.out'
+      })
+      .to(preloaderContent, {
         scale: 0.9,
         opacity: 0,
-        y: -30,
+        y: -35,
         duration: 0.25,
         ease: 'power2.in'
       })
@@ -1011,7 +1028,7 @@ window.switchView = function(viewName) {
     }
 
     if (navBackHomeBtn) navBackHomeBtn.classList.remove('hidden');
-    if (directMenuBtn) directMenuBtn.classList.add('hidden');
+    if (directMenuBtn) directMenuBtn.style.display = 'none';
 
     window.scrollTo(0, 0);
     if (lenis) lenis.scrollTo(0, { immediate: true });
@@ -1034,7 +1051,7 @@ window.switchView = function(viewName) {
     }
 
     if (navBackHomeBtn) navBackHomeBtn.classList.add('hidden');
-    if (directMenuBtn) directMenuBtn.classList.remove('hidden');
+    if (directMenuBtn) directMenuBtn.style.display = '';
 
     window.scrollTo(0, 0);
     if (lenis) lenis.scrollTo(0, { immediate: true });

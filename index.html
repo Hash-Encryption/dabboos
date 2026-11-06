@@ -59,100 +59,108 @@
   <div class="custom-cursor-follower hidden md:block" aria-hidden="true"></div>
 
   <!-- =========================================================================
-       1. STRICT PRELOADER (100% Full-Screen Lock, Zero Gap, Clean Burger)
+       1. LUXURY NEO-BRUTALIST PRELOADER (Gourmet Kitchen Assembly Experience)
        ========================================================================= -->
-  <div id="preloader" aria-label="Loading Dabboos Website">
-    <div id="preloader-content" class="relative z-30 flex flex-col items-center justify-center text-center px-4 max-w-xl mx-auto pb-24 sm:pb-32">
+  <div id="preloader" aria-label="Loading Dabboos Website" class="fixed inset-0 w-full h-full min-h-[100svh] z-[99999] flex flex-col items-center justify-center overflow-hidden select-none">
+    
+    <!-- Ambient Background Texture & Watermark -->
+    <div class="preloader-radial-glow absolute inset-0 pointer-events-none z-10"></div>
+    <div class="preloader-bg-pattern absolute inset-0 pointer-events-none opacity-45 z-20"></div>
+
+    <!-- Floating Background Chef Stickers (Subtle Branding) -->
+    <div class="absolute top-6 left-6 hidden sm:flex items-center gap-2 px-3.5 py-1.5 bg-black/40 backdrop-blur-sm border-2 border-white/20 rounded-full text-white/90 font-bungee text-[11px] transform -rotate-3 pointer-events-none shadow-lg">
+      <span>🔥 FRESH SMASHED</span>
+    </div>
+    <div class="absolute top-6 right-6 hidden sm:flex items-center gap-2 px-3.5 py-1.5 bg-black/40 backdrop-blur-sm border-2 border-white/20 rounded-full text-white/90 font-bungee text-[11px] transform rotate-3 pointer-events-none shadow-lg">
+      <span>🍗 100% CRISPY CHICKEN</span>
+    </div>
+    <div class="absolute bottom-8 left-8 hidden md:flex items-center gap-2 px-3.5 py-1.5 bg-black/40 backdrop-blur-sm border-2 border-white/20 rounded-full text-white/90 font-bungee text-[11px] transform rotate-2 pointer-events-none shadow-lg">
+      <span>🧀 MELTED CHEDDAR</span>
+    </div>
+    <div class="absolute bottom-8 right-8 hidden md:flex items-center gap-2 px-3.5 py-1.5 bg-black/40 backdrop-blur-sm border-2 border-white/20 rounded-full text-white/90 font-bungee text-[11px] transform -rotate-2 pointer-events-none shadow-lg">
+      <span>⚡ 48H SECRET BRINE</span>
+    </div>
+
+    <!-- Main Central Card: Gourmet Kitchen Order Ticket -->
+    <div id="preloader-content" class="relative z-30 w-[92vw] max-w-[430px] bg-[#FFFDF9] border-[3.5px] sm:border-4 border-black rounded-[28px] p-5 sm:p-7 shadow-[10px_10px_0px_#111] text-center flex flex-col items-center mx-auto transform will-change-transform">
       
-      <!-- Preloader Brand Badge -->
-      <div class="inline-flex items-center gap-2 bg-dabboos-yellow text-dabboos-dark px-4 py-1.5 rounded-full font-bungee text-xs tracking-wider border-2 border-black mb-5 shadow-[3px_3px_0px_#000]">
-        <span>🔥 DABBOOS STREET BURGER — مطعم دبوس</span>
+      <!-- Ticket Header Strip -->
+      <div class="w-full flex items-center justify-between pb-3 border-b-2 border-black/15 gap-2">
+        <!-- Live Kitchen Status Pill -->
+        <div class="inline-flex items-center gap-2 bg-[#E62419] text-white px-3 py-1 rounded-full text-[11px] font-arabic font-extrabold border-2 border-black shadow-[2px_2px_0px_#111]">
+          <span class="w-2 h-2 rounded-full bg-yellow-300 animate-pulse"></span>
+          <span>طلب رقم #048 • مطبخ حي</span>
+        </div>
+
+        <!-- Brand Identifier -->
+        <div class="font-display text-dabboos-dark text-sm sm:text-base tracking-wider uppercase flex items-center gap-1" dir="ltr">
+          <span class="text-dabboos-red font-black">DABBOOS</span>
+          <span class="text-xs text-gray-500 font-sans font-bold">KITCHEN</span>
+        </div>
       </div>
 
-      <!-- Centerpiece: Tightly Stacked Cartoon Burger Assembly -->
-      <div class="relative w-48 h-48 sm:w-56 sm:h-56 mb-5 flex items-center justify-center">
-        <svg viewBox="0 0 240 220" class="w-full h-full overflow-visible drop-shadow-[0_12px_20px_rgba(0,0,0,0.35)]">
-          <defs>
-            <linearGradient id="bunGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#F6AD55" />
-              <stop offset="100%" stop-color="#DD6B20" />
-            </linearGradient>
-            <linearGradient id="pattyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#742A2A" />
-              <stop offset="100%" stop-color="#4A1D0D" />
-            </linearGradient>
-            <linearGradient id="cheeseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#FEEBC8" />
-              <stop offset="100%" stop-color="#F5C518" />
-            </linearGradient>
-          </defs>
+      <!-- Centerpiece: Signature Real Burger with Steam & Googly Eyes -->
+      <div class="relative my-3 sm:my-4 flex flex-col items-center justify-center">
+        
+        <!-- Animated Steam Puffs -->
+        <div class="absolute -top-7 left-1/2 -translate-x-1/2 flex gap-4 pointer-events-none z-20" aria-hidden="true">
+          <span class="text-lg opacity-60 animate-bounce" style="animation-duration: 1.6s;">♨️</span>
+          <span class="text-2xl opacity-80 animate-bounce" style="animation-duration: 1.3s; animation-delay: 0.2s;">♨️</span>
+          <span class="text-lg opacity-60 animate-bounce" style="animation-duration: 1.8s; animation-delay: 0.4s;">♨️</span>
+        </div>
 
-          <!-- Layer 1: Bun Bottom (y=140) -->
-          <g id="layer-bun-bottom" class="opacity-0">
-            <path d="M42 142 Q120 142 198 142 Q202 168 120 170 Q38 168 42 142 Z" fill="url(#bunGrad)" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/>
-            <path d="M50 146 Q120 152 190 146" stroke="#FFE8D6" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          </g>
+        <!-- Burger Container with Subtle Float / Breathing Animation -->
+        <div class="relative w-40 sm:w-48 h-auto flex flex-col items-center justify-center group">
+          
+          <!-- Fun Cartoon Eyes Anchored Cleanly to Top Bun -->
+          <div id="preloader-eyes" class="absolute -top-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-30 pointer-events-none">
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-black shadow-[1px_1px_0px_#000] flex items-center justify-center overflow-hidden">
+              <div class="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-black relative flex items-center justify-center">
+                <span class="w-1 h-1 rounded-full bg-white absolute top-0.5 right-0.5"></span>
+              </div>
+            </div>
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-black shadow-[1px_1px_0px_#000] flex items-center justify-center overflow-hidden">
+              <div class="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-black relative flex items-center justify-center">
+                <span class="w-1 h-1 rounded-full bg-white absolute top-0.5 right-0.5"></span>
+              </div>
+            </div>
+          </div>
 
-          <!-- Layer 2: Crispy Chicken Patty (y=116) -->
-          <g id="layer-patty" class="opacity-0">
-            <rect x="36" y="118" width="168" height="26" rx="10" fill="url(#pattyGrad)" stroke="#111" stroke-width="3.5"/>
-            <path d="M48 126 L54 132 M78 124 L84 130 M110 126 L118 134 M145 124 L152 132 M180 126 L186 132" stroke="#2D0F07" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="62" cy="130" r="2" fill="#C53030"/>
-            <circle cx="130" cy="131" r="2" fill="#F5C518"/>
-          </g>
+          <!-- Real Signature Crispy Double Burger Cutout -->
+          <img 
+            src="assets/images/hero-burger-cutout.png" 
+            alt="Dabboos Signature Burger" 
+            class="w-full h-auto object-contain drop-shadow-[0_12px_18px_rgba(0,0,0,0.22)] relative z-10 block"
+          >
+        </div>
 
-          <!-- Layer 3: Melted Cheese with Drip (y=108) -->
-          <g id="layer-cheese" class="opacity-0">
-            <polygon points="38,110 202,110 192,122 170,128 150,116 120,132 90,115 65,128 45,116" fill="url(#cheeseGrad)" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/>
-            <path d="M120 130 Q122 144 118 146 Q114 144 116 130" fill="#F5C518" stroke="#111" stroke-width="2.5"/>
-          </g>
+        <!-- Quality Guarantee Mini Badge -->
+        <div class="inline-flex items-center gap-1.5 bg-dabboos-yellow px-2.5 py-0.5 rounded-full border border-black text-[10px] sm:text-[11px] font-arabic font-extrabold text-black shadow-[2px_2px_0px_#111] -mt-1 relative z-20">
+          <span>✨ خلطة الـ 12 بهار السرية</span>
+        </div>
 
-          <!-- Layer 4: Fresh Lettuce (y=100) -->
-          <g id="layer-lettuce" class="opacity-0">
-            <path d="M32 102 Q45 92 60 100 Q75 90 90 100 Q105 90 120 100 Q135 90 150 100 Q165 90 180 100 Q195 92 208 102 Q175 108 120 108 Q50 108 32 102 Z" fill="#48BB78" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/>
-          </g>
-
-          <!-- Layer 5: Spicy Hot Sauce (y=92) -->
-          <g id="layer-sauce" class="opacity-0">
-            <path d="M52 94 Q80 100 110 94 Q140 100 170 94 Q186 96 190 93" stroke="#9B111E" stroke-width="5" stroke-linecap="round" fill="none"/>
-            <circle cx="82" cy="104" r="3" fill="#9B111E"/>
-            <circle cx="152" cy="106" r="3.5" fill="#9B111E"/>
-          </g>
-
-          <!-- Layer 6: Fluffy Top Bun (y=54) -->
-          <g id="layer-bun-top" class="opacity-0">
-            <path d="M36 90 C36 34 204 34 204 90 Q120 96 36 90 Z" fill="url(#bunGrad)" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/>
-            <ellipse cx="75" cy="62" rx="3.5" ry="2" transform="rotate(-25 75 62)" fill="#FFF" stroke="#111" stroke-width="1"/>
-            <ellipse cx="105" cy="50" rx="3.5" ry="2" transform="rotate(10 105 50)" fill="#FFF" stroke="#111" stroke-width="1"/>
-            <ellipse cx="135" cy="50" rx="3.5" ry="2" transform="rotate(-15 135 50)" fill="#FFF" stroke="#111" stroke-width="1"/>
-            <ellipse cx="165" cy="62" rx="3.5" ry="2" transform="rotate(20 165 62)" fill="#FFF" stroke="#111" stroke-width="1"/>
-          </g>
-
-          <!-- Layer 7: Animated Cartoon Googly Eyes attached cleanly to top bun -->
-          <g id="layer-eyes" class="opacity-0">
-            <circle cx="102" cy="36" r="14" fill="#FFF" stroke="#111" stroke-width="3.5"/>
-            <circle cx="106" cy="36" r="6" fill="#111"/>
-            <circle cx="108" cy="33" r="2" fill="#FFF"/>
-            <circle cx="138" cy="36" r="14" fill="#FFF" stroke="#111" stroke-width="3.5"/>
-            <circle cx="134" cy="36" r="6" fill="#111"/>
-            <circle cx="136" cy="33" r="2" fill="#FFF"/>
-          </g>
-        </svg>
       </div>
 
-      <!-- Percentage Counter Display -->
-      <div id="preloader-percent" class="font-display text-6xl md:text-8xl text-white tracking-tighter drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)]">
-        0%
+      <!-- Percentage Display -->
+      <div class="flex items-baseline justify-center gap-1 my-1">
+        <span id="preloader-percent" class="font-display text-5xl sm:text-6xl text-dabboos-red tracking-tight leading-none drop-shadow-[2px_2px_0px_#111]" dir="ltr">
+          0%
+        </span>
       </div>
 
-      <!-- Progress Track -->
-      <div class="w-64 md:w-80 h-3 bg-black/40 rounded-full border-2 border-black overflow-hidden my-4 p-0.5">
-        <div id="preloader-progress-bar" class="h-full bg-dabboos-yellow rounded-full transition-all duration-75 ease-out" style="width: 0%"></div>
+      <!-- Chunky Candy-Striped Progress Bar -->
+      <div class="w-full h-4 sm:h-5 bg-[#EAE5D9] rounded-full border-2 sm:border-3 border-black p-0.5 overflow-hidden my-2 shadow-[2px_2px_0px_#111] relative">
+        <div id="preloader-progress-bar" class="preloader-progress-fill h-full rounded-full bg-dabboos-yellow transition-all duration-75 ease-out" style="width: 0%"></div>
       </div>
 
-      <!-- Single Clean Status Headline -->
-      <div id="preloader-status" dir="rtl" class="font-arabic font-extrabold text-sm sm:text-base text-white tracking-wide">
-        جاري تحضير القرمشة... — PREPARING THE CRUNCH
+      <!-- Live Dynamic Chef Status Box -->
+      <div class="w-full bg-[#F4EFE6] border-2 border-black rounded-xl p-2.5 shadow-[2px_2px_0px_#111] flex flex-col items-center justify-center gap-0.5 min-h-[58px]">
+        <div id="preloader-status-ar" dir="rtl" class="font-arabic font-black text-xs sm:text-sm text-[#111111] tracking-wide line-clamp-1">
+          غمر الدجاج الطازج في تتبيلة الـ 12 بهار السرية...
+        </div>
+        <div id="preloader-status-en" dir="ltr" class="font-display text-[10px] sm:text-xs text-[#0A1996] tracking-wider uppercase font-bold line-clamp-1">
+          INFUSING FRESH CHICKEN IN 12 SECRET SPICES
+        </div>
       </div>
 
     </div>
@@ -417,7 +425,7 @@
               </div>
 
               <!-- Cartoon Googly Eyes attached cleanly to top bun -->
-              <div id="hero-eyes-container" class="absolute top-[3%] md:top-[4%] left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-2.5 z-30 pointer-events-none">
+              <div id="hero-eyes-container" class="absolute top-[5.5%] md:top-[6.5%] left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-2.5 z-30 pointer-events-none">
                 <div class="hero-eye-white relative w-9 h-9 md:w-14 md:h-14 rounded-full bg-white border-3 md:border-4 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center overflow-hidden">
                   <div class="hero-eye-pupil w-4.5 h-4.5 md:w-7 md:h-7 rounded-full bg-black relative flex items-center justify-center">
                     <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white absolute top-1 right-1"></span>
