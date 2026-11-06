@@ -24,6 +24,45 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ==========================================================================
+   CUSTOM NEO-BRUTALIST BRAND SCROLLBAR (Eliminates Default OS Grey Bar)
+   ========================================================================== */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-red) #F9F6F0;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F9F6F0;
+  border-left: 2px solid #111111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-red);
+  border: 2px solid #111111;
+  border-radius: 9999px;
+  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.4);
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-yellow);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--color-blue);
+}
+
+::-webkit-scrollbar-corner {
+  background: #F9F6F0;
+}
+
 /* Scroll Lock during Preloader */
 body.is-loading {
   overflow: hidden !important;
@@ -74,6 +113,24 @@ body.is-loading {
   .hero-eye-pupil {
     width: 26px !important;
     height: 26px !important;
+  }
+}
+
+.manifesto-eye-pupil {
+  width: 14px !important;
+  height: 14px !important;
+  background-color: #111111 !important;
+  border-radius: 9999px !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  will-change: transform;
+}
+@media (min-width: 640px) {
+  .manifesto-eye-pupil {
+    width: 18px !important;
+    height: 18px !important;
   }
 }
 
@@ -614,6 +671,16 @@ html[dir="ltr"] .font-arabic {
 
 .preloader-radial-glow {
   background: radial-gradient(circle at center, rgba(230, 36, 25, 0.92) 0%, rgba(138, 14, 8, 0.98) 100%);
+}
+
+/* Section 3: Taste Manifesto Styling */
+.manifesto-bg-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.35) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+.manifesto-radial-glow {
+  background: radial-gradient(circle at center, rgba(230, 36, 25, 0.95) 0%, rgba(154, 18, 10, 0.98) 100%);
 }
 
 #preloader-content {

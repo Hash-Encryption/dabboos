@@ -427,12 +427,12 @@
               <!-- Cartoon Googly Eyes attached cleanly to top bun -->
               <div id="hero-eyes-container" class="absolute top-[5.5%] md:top-[6.5%] left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-2.5 z-30 pointer-events-none">
                 <div class="hero-eye-white relative w-9 h-9 md:w-14 md:h-14 rounded-full bg-white border-3 md:border-4 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center overflow-hidden">
-                  <div class="hero-eye-pupil w-4.5 h-4.5 md:w-7 md:h-7 rounded-full bg-black relative flex items-center justify-center">
+                  <div class="hero-eye-pupil w-[18px] h-[18px] md:w-[26px] md:h-[26px] rounded-full bg-black relative flex items-center justify-center">
                     <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white absolute top-1 right-1"></span>
                   </div>
                 </div>
                 <div class="hero-eye-white relative w-9 h-9 md:w-14 md:h-14 rounded-full bg-white border-3 md:border-4 border-black shadow-[2px_2px_0px_#000] flex items-center justify-center overflow-hidden">
-                  <div class="hero-eye-pupil w-4.5 h-4.5 md:w-7 md:h-7 rounded-full bg-black relative flex items-center justify-center">
+                  <div class="hero-eye-pupil w-[18px] h-[18px] md:w-[26px] md:h-[26px] rounded-full bg-black relative flex items-center justify-center">
                     <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white absolute top-1 right-1"></span>
                   </div>
                 </div>
@@ -443,6 +443,8 @@
                 src="assets/images/hero-burger-cutout.png" 
                 alt="Dabboos Signature Crispy Double Burger" 
                 decoding="async"
+                loading="eager"
+                fetchpriority="high"
                 class="w-[78vw] max-w-[280px] sm:max-w-[380px] md:max-w-[500px] h-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.28)] transform group-hover:scale-105 transition-transform duration-500 relative z-20 block mx-auto"
               >
 
@@ -673,7 +675,7 @@
 
 
       <!-- =====================================================================
-           SECTION 3: LIQUID WAVE TRANSITION & CARTOON MASCOT (#E62419 Red)
+           SECTION 3: TASTE MANIFESTO & THE SECRET FORMULA (#E62419 Red)
            ===================================================================== -->
       <div class="liquid-wave-divider -mb-1" aria-hidden="true">
         <svg viewBox="0 0 1440 120" fill="none" class="w-full">
@@ -681,76 +683,152 @@
         </svg>
       </div>
 
-      <section class="relative bg-dabboos-red text-white py-24 sm:py-32 px-4 sm:px-8 overflow-hidden">
+      <section class="relative bg-[#B81910] text-white py-20 sm:py-28 px-4 sm:px-8 overflow-hidden">
         
+        <!-- Ambient Vignette & Dot Matrix Pattern -->
+        <div class="manifesto-radial-glow absolute inset-0 pointer-events-none z-0"></div>
+        <div class="manifesto-bg-pattern absolute inset-0 pointer-events-none opacity-40 z-0"></div>
+
+        <!-- Floating Background Comic Badges (Subtle Depth) -->
+        <div class="absolute top-12 left-6 hidden lg:flex items-center gap-2 px-4 py-1.5 bg-black/40 backdrop-blur-sm border-2 border-white/20 rounded-full text-white/90 font-bungee text-xs transform -rotate-6 pointer-events-none shadow-lg">
+          <span>⚡ SMASHED FRESH DAILY</span>
+        </div>
+        <div class="absolute top-12 right-6 hidden lg:flex items-center gap-2 px-4 py-1.5 bg-black/40 backdrop-blur-sm border-2 border-white/20 rounded-full text-white/90 font-bungee text-xs transform rotate-6 pointer-events-none shadow-lg">
+          <span>🔥 12-SPICE INFUSED BRINE</span>
+        </div>
+        <div class="absolute bottom-16 left-8 hidden lg:flex items-center gap-2 px-4 py-1.5 bg-black/40 backdrop-blur-sm border-2 border-white/20 rounded-full text-white/90 font-bungee text-xs transform rotate-3 pointer-events-none shadow-lg">
+          <span>🧀 48H AGED MELTED CHEDDAR</span>
+        </div>
+        <div class="absolute bottom-16 right-8 hidden lg:flex items-center gap-2 px-4 py-1.5 bg-black/40 backdrop-blur-sm border-2 border-white/20 rounded-full text-white/90 font-bungee text-xs transform -rotate-3 pointer-events-none shadow-lg">
+          <span>👑 KING OF GOLDEN CRUNCH</span>
+        </div>
+
         <div class="max-w-6xl mx-auto flex flex-col items-center text-center relative z-10">
           
-          <div class="transform -rotate-6 mb-6">
-            <span data-i18n="sec3_badge" class="sticker-badge sticker-badge-yellow text-sm sm:text-base border-3" dir="ltr">
+          <!-- Category Badge -->
+          <div class="transform -rotate-3 mb-4">
+            <span data-i18n="sec3_badge" class="sticker-badge sticker-badge-yellow text-xs sm:text-sm font-bungee border-3 shadow-[4px_4px_0px_#111]" dir="ltr">
               ★ THE DABBOOS EXPERIENCE ★
             </span>
           </div>
 
-          <h2 data-i18n="sec3_title" class="font-display text-white text-6xl sm:text-8xl md:text-9xl leading-[0.88] tracking-tight mb-6" dir="ltr">
+          <!-- Section Headline -->
+          <h2 data-i18n="sec3_title" class="font-display text-white text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight mb-4 drop-shadow-[4px_4px_0px_#111]" dir="ltr">
             FOOD THAT FEELS GOOD
           </h2>
 
-          <p data-i18n="sec3_sub" class="font-arabic font-extrabold text-xl sm:text-2xl text-yellow-300 max-w-2xl mb-12">
+          <!-- Subheadline -->
+          <p data-i18n="sec3_sub" class="font-arabic font-extrabold text-base sm:text-xl md:text-2xl text-yellow-300 max-w-2xl mb-8 leading-relaxed">
             لا تنازلات في الطعم، لا برجر عادي! طاقة شوارع حقيقية وقرمشة تهز كيانك من أول لقمة.
           </p>
 
-          <div class="relative w-72 h-72 sm:w-96 sm:h-96 my-6 flex items-center justify-center">
-            <div class="absolute -top-4 -end-4 z-20 transform rotate-12">
-              <span data-i18n="sec3_mascot_badge" class="sticker-badge sticker-badge-yellow text-xs sm:text-sm border-3">
-                🔥 BOLD FLAVOUR!
-              </span>
+          <!-- Interactive Centerpiece Showcase: Neo-Brutalist Gourmet Pedestal Card -->
+          <div class="relative w-full max-w-md sm:max-w-xl bg-[#FFFDF9] text-dabboos-dark border-[3.5px] sm:border-4 border-black rounded-[28px] sm:rounded-[36px] p-5 sm:p-8 shadow-[12px_12px_0px_#111] my-4 flex flex-col items-center">
+            
+            <!-- Pedestal Header Strip -->
+            <div class="w-full flex items-center justify-between pb-3.5 border-b-2 border-black/15 gap-2">
+              <div class="inline-flex items-center gap-2 bg-[#E62419] text-white px-3 py-1 rounded-full text-xs font-arabic font-extrabold border-2 border-black shadow-[2px_2px_0px_#111]">
+                <span class="w-2 h-2 rounded-full bg-yellow-300 animate-pulse"></span>
+                <span>🔥 سر القرمشة الأسطورية</span>
+              </div>
+              <div class="font-display text-xs sm:text-sm text-dabboos-blue font-black tracking-wider uppercase" dir="ltr">
+                DABBOOS SIGNATURE
+              </div>
             </div>
 
-            <svg viewBox="0 0 320 320" class="w-full h-full drop-shadow-[0_20px_35px_rgba(0,0,0,0.5)]">
-              <path d="M120 40 Q130 20 125 5" stroke="#FFE8D6" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6"/>
-              <path d="M160 35 Q170 15 165 0" stroke="#FFE8D6" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
-              <path d="M200 40 Q210 20 205 5" stroke="#FFE8D6" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6"/>
+            <!-- Delicious Showcase Burger with Steam & Alive Googly Eyes -->
+            <div id="manifesto-burger-box" class="relative my-4 flex flex-col items-center justify-center cursor-pointer group select-none">
+              
+              <!-- Rising Steam -->
+              <div class="absolute -top-7 left-1/2 -translate-x-1/2 flex gap-4 pointer-events-none z-20" aria-hidden="true">
+                <span class="text-xl opacity-60 animate-bounce" style="animation-duration: 1.7s;">♨️</span>
+                <span class="text-2xl opacity-80 animate-bounce" style="animation-duration: 1.4s; animation-delay: 0.2s;">♨️</span>
+                <span class="text-xl opacity-60 animate-bounce" style="animation-duration: 1.9s; animation-delay: 0.4s;">♨️</span>
+              </div>
 
-              <g transform="translate(10, 140)">
-                <ellipse cx="25" cy="25" rx="20" ry="15" fill="#FFF" stroke="#111" stroke-width="4"/>
-                <path d="M18 10 C32 10 32 40 18 40" stroke="#111" stroke-width="3" fill="none"/>
-                <path d="M28 12 C40 14 40 38 28 38" stroke="#111" stroke-width="3" fill="none"/>
-                <rect x="0" y="16" width="12" height="18" rx="4" fill="#FFF" stroke="#111" stroke-width="3"/>
-              </g>
+              <!-- Eyes anchored to top bun -->
+              <div id="manifesto-eyes-container" class="absolute top-[3%] left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-30 pointer-events-none">
+                <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white border-2 sm:border-3 border-black shadow-[1px_1px_0px_#000] flex items-center justify-center overflow-hidden">
+                  <div class="manifesto-eye-pupil w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 rounded-full bg-black relative flex items-center justify-center">
+                    <span class="w-1 h-1 rounded-full bg-white absolute top-0.5 right-0.5"></span>
+                  </div>
+                </div>
+                <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white border-2 sm:border-3 border-black shadow-[1px_1px_0px_#000] flex items-center justify-center overflow-hidden">
+                  <div class="manifesto-eye-pupil w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 rounded-full bg-black relative flex items-center justify-center">
+                    <span class="w-1 h-1 rounded-full bg-white absolute top-0.5 right-0.5"></span>
+                  </div>
+                </div>
+              </div>
 
-              <g transform="translate(265, 140)">
-                <ellipse cx="25" cy="25" rx="20" ry="15" fill="#FFF" stroke="#111" stroke-width="4"/>
-                <path d="M32 10 C18 10 18 40 32 40" stroke="#111" stroke-width="3" fill="none"/>
-                <path d="M22 12 C10 14 10 38 22 38" stroke="#111" stroke-width="3" fill="none"/>
-                <rect x="38" y="16" width="12" height="18" rx="4" fill="#FFF" stroke="#111" stroke-width="3"/>
-              </g>
+              <!-- Signature Cutout Burger Image -->
+              <img 
+                src="assets/images/hero-burger-cutout.png" 
+                alt="Dabboos Signature Crispy Double Burger" 
+                class="w-52 sm:w-64 md:w-72 h-auto object-contain drop-shadow-[0_16px_25px_rgba(0,0,0,0.28)] transform group-hover:scale-105 transition-transform duration-300 relative z-10 block"
+              >
 
-              <path d="M50 120 C50 55 270 55 270 120 Q160 130 50 120 Z" fill="#F6AD55" stroke="#111" stroke-width="5"/>
-              <circle cx="135" cy="72" r="16" fill="#FFF" stroke="#111" stroke-width="4"/>
-              <circle cx="138" cy="72" r="7" fill="#111"/>
-              <circle cx="140" cy="69" r="2.5" fill="#FFF"/>
-              <circle cx="185" cy="72" r="16" fill="#FFF" stroke="#111" stroke-width="4"/>
-              <circle cx="182" cy="72" r="7" fill="#111"/>
-              <circle cx="184" cy="69" r="2.5" fill="#FFF"/>
+              <!-- Floating Sticker Tag -->
+              <div class="absolute -bottom-2 z-20 transform -rotate-2">
+                <span data-i18n="sec3_mascot_badge" class="sticker-badge sticker-badge-yellow text-xs sm:text-sm border-2 sm:border-3 shadow-[3px_3px_0px_#111]">
+                  🔥 BOLD FLAVOUR!
+                </span>
+              </div>
 
-              <rect x="52" y="125" width="216" height="28" rx="10" fill="#4A1D0D" stroke="#111" stroke-width="4"/>
-              <polygon points="56,150 264,150 250,165 220,155 180,175 140,152 100,172 70,155" fill="#F5C518" stroke="#111" stroke-width="4"/>
-              <rect x="52" y="170" width="216" height="28" rx="10" fill="#742A2A" stroke="#111" stroke-width="4"/>
-              <path d="M46 195 Q90 215 160 198 Q230 215 274 195 Q240 205 160 205 Q80 205 46 195 Z" fill="#48BB78" stroke="#111" stroke-width="4"/>
-              <path d="M60 205 Q160 205 260 205 Q265 235 160 238 Q55 235 60 205 Z" fill="#DD6B20" stroke="#111" stroke-width="5"/>
-            </svg>
+            </div>
+
+            <!-- Taste Guarantee Text -->
+            <p class="font-arabic font-black text-sm sm:text-base text-dabboos-dark mt-3 mb-4 leading-normal">
+              دجاج ولحم سماش طازج 100% غرقان شيدر معتقة ومخلل مقرمش في خبز بريوش زبداني!
+            </p>
+
+            <!-- Direct CTA Order Button -->
+            <button onclick="window.switchView('menu')" class="w-full py-3.5 px-6 bg-dabboos-yellow hover:bg-[#FFE066] text-black font-arabic font-black text-sm sm:text-base rounded-2xl border-3 border-black shadow-[4px_4px_0px_#111] hover:shadow-[6px_6px_0px_#111] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_#111] cursor-pointer transition-all flex items-center justify-center gap-2 group">
+              <span class="text-xl group-hover:scale-125 transition-transform duration-200">🍔</span>
+              <span>تذوق الفرق وتصفح المنيو الآن</span>
+              <span class="font-display text-lg transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">⚡</span>
+            </button>
+
           </div>
 
-          <div class="mt-8 mb-12 flex flex-wrap items-center justify-center gap-4">
-            <span data-i18n="sec3_pill_1" class="sticker-badge sticker-badge-cream text-xs sm:text-sm font-arabic">
-              🔥 دجاج ولحم بلدي طازج يومياً 100%
-            </span>
-            <span data-i18n="sec3_pill_2" class="sticker-badge sticker-badge-yellow text-xs sm:text-sm font-arabic">
-              🧀 صوص جبنة معتقة 48 ساعة
-            </span>
-            <span data-i18n="sec3_pill_3" class="sticker-badge sticker-badge-blue text-xs sm:text-sm font-arabic">
-              ⚡ درجات حرارة وتتبيلة حسب اختيارك
-            </span>
+          <!-- 3-Column Bento Quality Pillars -->
+          <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-4xl">
+            
+            <div class="bg-[#FFFDF9] text-dabboos-dark border-3 border-black rounded-2xl p-4 shadow-[5px_5px_0px_#111] text-start flex flex-col justify-between hover:-translate-y-1 transition-transform">
+              <div>
+                <span class="inline-block px-2.5 py-0.5 bg-dabboos-red text-white text-[11px] font-arabic font-extrabold rounded-full border border-black mb-2">
+                  🍗 طازج يومياً
+                </span>
+                <h3 class="font-arabic font-black text-base text-gray-950 mb-1">لحوم طازجة بدون تجميد</h3>
+                <p class="font-arabic text-xs text-gray-700 leading-relaxed">
+                  دجاج محلي ولحم بقري طازج يومياً بدون تجميد، متبل لمدة 48 ساعة كاملة.
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-[#FFFDF9] text-dabboos-dark border-3 border-black rounded-2xl p-4 shadow-[5px_5px_0px_#111] text-start flex flex-col justify-between hover:-translate-y-1 transition-transform">
+              <div>
+                <span class="inline-block px-2.5 py-0.5 bg-dabboos-yellow text-black text-[11px] font-arabic font-extrabold rounded-full border border-black mb-2">
+                  🧀 شيدر سائلة
+                </span>
+                <h3 class="font-arabic font-black text-base text-gray-950 mb-1">شيدر معتقة ذائبة 48 ساعة</h3>
+                <p class="font-arabic text-xs text-gray-700 leading-relaxed">
+                  شلال من الجبنة المعتقة الذائبة بين طبقات الفيليه المقرمش الساخن.
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-[#FFFDF9] text-dabboos-dark border-3 border-black rounded-2xl p-4 shadow-[5px_5px_0px_#111] text-start flex flex-col justify-between hover:-translate-y-1 transition-transform">
+              <div>
+                <span class="inline-block px-2.5 py-0.5 bg-dabboos-blue text-white text-[11px] font-arabic font-extrabold rounded-full border border-black mb-2">
+                  ⚡ نكهة نارية
+                </span>
+                <h3 class="font-arabic font-black text-base text-gray-950 mb-1">خلطة الـ 12 بهار السرية</h3>
+                <p class="font-arabic text-xs text-gray-700 leading-relaxed">
+                  توليفة بهارات طبيعية وحرارة متوازنة تجعل كل قضمة تجربة إدمانية لا تُنسى.
+                </p>
+              </div>
+            </div>
+
           </div>
 
         </div>

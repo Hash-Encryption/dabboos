@@ -92,6 +92,7 @@ function initLenis() {
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
   });
+  gsap.ticker.lagSmoothing(0);
 
   gsap.ticker.lagSmoothing(0);
 
@@ -408,7 +409,10 @@ function playHeroEntrance() {
 function initHeroInteractions() {
   const heroBurger = document.getElementById('hero-burger-centerpiece');
   const heroContainer = document.getElementById('hero-section');
+  const heroEyesContainer = document.getElementById('hero-eyes-container');
   const eyePupils = document.querySelectorAll('.hero-eye-pupil');
+  const manifestoPupils = document.querySelectorAll('.manifesto-eye-pupil');
+  const allPupils = document.querySelectorAll('.hero-eye-pupil, .manifesto-eye-pupil');
 
   if (!heroContainer) return;
 
@@ -416,40 +420,144 @@ function initHeroInteractions() {
   gsap.set('#hero-3d-title', { xPercent: -50, left: '50%' });
   gsap.set('#hero-eyes-container', { xPercent: -50, left: '50%' });
 
-  // Eyes mouse tracking (desktop only)
-  if (window.matchMedia && !window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
-    window.addEventListener('mousemove', (e) => {
-      if (!eyePupils.length) return;
+  let isUserInteracting = false;
+  let interactionTimeout = null;
+
+  function setPupilsPosition(moveX, moveY, duration = 0.15) {
+    allPupils.forEach((pupil) => {
+      gsap.to(pupil, {
+        x: moveX,
+        y: moveY,
+        duration: duration,
+        ease: 'power1.out',
+        overwrite: 'auto'
+      });
+    });
+  }
+
+  function handlePointer(clientX, clientY) {
+    if (!heroContainer || !allPupils.length) return;
+    const heroRect = heroContainer.getBoundingClientRect();
+    if (heroRect.bottom < 0 || heroRect.top > window.innerHeight) return;
+
+    isUserInteracting = true;
+    clearTimeout(interactionTimeout);
+    interactionTimeout = setTimeout(() => {
+      isUserInteracting = false;
+    }, 2200);
+
+    const eyeRect = heroEyesContainer ? heroEyesContainer.getBoundingClientRect() : heroRect;
+    const centerX = eyeRect.left + eyeRect.width / 2;
+    const centerY = eyeRect.top + eyeRect.height / 2;
+
+    const deltaX = (clientX - centerX) / (window.innerWidth / 2);
+    const deltaY = (clientY - centerY) / (window.innerHeight / 2);
+
+    const maxMove = window.innerWidth < 768 ? 6 : 8.5;
+    const moveX = Math.max(-maxMove, Math.min(maxMove, deltaX * maxMove));
+    const moveY = Math.max(-maxMove, Math.min(maxMove, deltaY * maxMove));
+
+    setPupilsPosition(moveX, moveY, 0.12);
+  }
+
+  // 1. Desktop Mouse Tracking
+  window.addEventListener('mousemove', (e) => {
+    handlePointer(e.clientX, e.clientY);
+  }, { passive: true });
+
+  // 2. Mobile Touch Tracking (Finger follow on touch & scroll)
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      handlePointer(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchstart', (e) => {
+    if (e.touches && e.touches[0]) {
+      handlePointer(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  // 3. Mobile Device Gyroscope Tilt Tracking (Physical Phone Tilt)
+  if (window.DeviceOrientationEvent) {
+    window.addEventListener('deviceorientation', (e) => {
+      if (isUserInteracting) return; // Touch takes precedence
+      if (e.gamma === null || e.beta === null) return;
       const heroRect = heroContainer.getBoundingClientRect();
       if (heroRect.bottom < 0 || heroRect.top > window.innerHeight) return;
 
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight * 0.45;
-      const deltaX = (e.clientX - centerX) / (window.innerWidth / 2);
-      const deltaY = (e.clientY - centerY) / (window.innerHeight / 2);
-
-      const maxMove = 7;
-      const moveX = Math.max(-maxMove, Math.min(maxMove, deltaX * maxMove));
-      const moveY = Math.max(-maxMove, Math.min(maxMove, deltaY * maxMove));
-
-      eyePupils.forEach((pupil) => {
-        pupil.style.transform = `translate(${moveX}px, ${moveY}px)`;
-      });
+      const tiltX = Math.max(-6, Math.min(6, (e.gamma / 25) * 5));
+      const tiltY = Math.max(-6, Math.min(6, ((e.beta - 45) / 25) * 5));
+      setPupilsPosition(tiltX, tiltY, 0.25);
     }, { passive: true });
   }
 
-  // Periodic blinking eyes
+  // 4. Autonomous "Curious Burger" Ambient AI Eye Darting
+  const idleEyePoses = [
+    { x: 0, y: 0 },             // Looking straight
+    { x: 0, y: 5.5 },           // Looking down at DABBOOS title
+    { x: -5, y: -2.5 },         // Looking up-left at steam
+    { x: 5, y: -2.5 },          // Looking up-right at steam
+    { x: -5.5, y: 1 },          // Curious look left
+    { x: 5.5, y: 1 },           // Curious look right
+    { x: 0, y: 0 }              // Back to center
+  ];
+  let idleIdx = 0;
+
+  setInterval(() => {
+    if (isUserInteracting) return;
+    const heroRect = heroContainer.getBoundingClientRect();
+    if (heroRect.bottom < 0 || heroRect.top > window.innerHeight) return;
+
+    const pose = idleEyePoses[idleIdx % idleEyePoses.length];
+    idleIdx++;
+    setPupilsPosition(pose.x, pose.y, 0.35);
+  }, 2600);
+
+  // 5. Periodic Lifelike Eye Blinking (Mobile & Desktop)
   setInterval(() => {
     const eyeWhites = document.querySelectorAll('.hero-eye-white');
     if (!eyeWhites.length) return;
     gsap.to(eyeWhites, {
       scaleY: 0.1,
-      duration: 0.1,
+      duration: 0.09,
       yoyo: true,
       repeat: 1,
       transformOrigin: 'center center'
     });
-  }, 4200);
+  }, 3800);
+
+  // 6. Interactive Tap / Click on Burger (Squash & Wink)
+  if (heroBurger) {
+    const handleBurgerTap = () => {
+      gsap.timeline()
+        .to(heroBurger, { scaleX: 1.08, scaleY: 0.92, duration: 0.12, ease: 'power2.out' })
+        .to(heroBurger, { scaleX: 0.95, scaleY: 1.05, duration: 0.15, ease: 'power1.out' })
+        .to(heroBurger, { scaleX: 1, scaleY: 1, duration: 0.25, ease: 'back.out(3)' });
+
+      const eyeWhites = document.querySelectorAll('.hero-eye-white');
+      gsap.to(eyeWhites, { scaleY: 0.08, duration: 0.08, yoyo: true, repeat: 1 });
+      setPupilsPosition(0, -6, 0.1);
+      setTimeout(() => setPupilsPosition(0, 0, 0.25), 380);
+
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        try { navigator.vibrate([20, 40, 20]); } catch (_) {}
+      }
+    };
+
+    heroBurger.addEventListener('click', handleBurgerTap);
+  }
+
+  // Section 3 Burger Tap
+  const manifestoBurger = document.getElementById('manifesto-burger-box');
+  if (manifestoBurger) {
+    manifestoBurger.addEventListener('click', () => {
+      gsap.timeline()
+        .to(manifestoBurger, { scaleX: 1.08, scaleY: 0.92, duration: 0.12, ease: 'power2.out' })
+        .to(manifestoBurger, { scaleX: 0.95, scaleY: 1.05, duration: 0.15, ease: 'power1.out' })
+        .to(manifestoBurger, { scaleX: 1, scaleY: 1, duration: 0.25, ease: 'back.out(3)' });
+    });
+  }
 
   // Responsive Parallax: Smooth scrub on Desktop; Rock-solid zero-jitter on Mobile
   const mm = gsap.matchMedia();
