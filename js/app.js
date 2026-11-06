@@ -1650,12 +1650,21 @@ function initMenuPage() {
 
     const dict = I18N_DICT[currentLang] || I18N_DICT.ar;
 
+    // Update count badge
+    const countBadge = document.getElementById('menu-items-count-badge');
+    if (countBadge) {
+      countBadge.textContent = currentLang === 'ar' ? `${filtered.length} صنف` : `${filtered.length} items`;
+    }
+
     if (filtered.length === 0) {
       gridContainer.innerHTML = `
-        <div class="col-span-full py-16 text-center">
-          <span class="text-5xl block mb-3">🔍</span>
-          <h3 class="font-arabic font-extrabold text-2xl text-gray-800 mb-2">${dict.menu_no_results_title}</h3>
-          <p class="font-arabic text-gray-600 text-sm">${dict.menu_no_results_desc}</p>
+        <div class="col-span-full py-16 px-4 text-center bg-white rounded-3xl border-3 border-black shadow-[6px_6px_0px_#111] max-w-lg mx-auto my-8">
+          <span class="text-6xl block mb-3 animate-bounce">🔍</span>
+          <h3 class="font-arabic font-black text-2xl text-gray-900 mb-2">${dict.menu_no_results_title}</h3>
+          <p class="font-arabic font-bold text-gray-600 text-sm mb-6">${dict.menu_no_results_desc}</p>
+          <button onclick="window.clearMenuSearch()" class="btn-dabboos py-2.5 px-6 font-arabic font-black text-sm cursor-pointer">
+            عرض جميع الأصناف 🔥
+          </button>
         </div>
       `;
       return;
@@ -1664,48 +1673,72 @@ function initMenuPage() {
     gridContainer.innerHTML = filtered.map((item) => {
       const title = currentLang === 'ar' ? item.nameAr : item.nameEn;
       const tag = currentLang === 'ar' ? item.tagAr : item.tagEn;
-      const formattedPrice = `${item.price.toFixed(2)} ${dict.currency}`;
+      const formattedPrice = item.price.toFixed(2);
+
+      let badgeLabel = currentLang === 'ar' ? '⭐ مميز' : '⭐ FEATURED';
+      let badgeClass = 'sticker-badge-yellow';
+      if (item.id === 'b1' || item.id === 'b2') {
+        badgeLabel = currentLang === 'ar' ? '🔥 الأكثر طلباً' : '🔥 BESTSELLER';
+        badgeClass = 'sticker-badge-red';
+      } else if (item.category === 'saj') {
+        badgeLabel = currentLang === 'ar' ? '🌯 صاج طازج' : '🌯 FRESH SAJ';
+      } else if (item.category === 'crispy') {
+        badgeLabel = currentLang === 'ar' ? '🍗 سوبر كرانش' : '🍗 SUPER CRUNCH';
+      } else if (item.category === 'sides') {
+        badgeLabel = currentLang === 'ar' ? '🍟 للمشاركة' : '🍟 TO SHARE';
+      }
 
       return `
-        <div class="menu-product-card p-2 sm:p-3.5 flex flex-col justify-between">
-          <div>
-            <!-- 1. Large Appetizing Image (decoding="async", NO lazy loading, explicit 4/3 aspect ratio) -->
-            <div class="relative w-full aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden border-2 border-black bg-amber-50 mb-2 sm:mb-3">
-              <img 
-                src="${item.image}" 
-                alt="${title}" 
-                decoding="async"
-                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                style="aspect-ratio: 4 / 3; object-fit: cover; width: 100%; display: block;"
-              >
-            </div>
-
-            <!-- 2. Dish Title (Allows wrap up to 2 lines without any ellipsis truncation) -->
-            <h3 class="font-arabic font-extrabold text-[13.5px] sm:text-base text-gray-900 leading-[1.3] mb-1 min-h-[36px] flex items-center text-start">
-              ${title}
-            </h3>
-
-            <!-- 3. Micro-Tag (Clean badge, no ellipsis clipping) -->
-            <div class="mb-2 sm:mb-3 text-start">
-              <span class="font-arabic text-[10.5px] sm:text-xs font-bold text-gray-700 bg-amber-100/90 border border-amber-300 px-2 py-0.5 rounded-md inline-block max-w-full leading-normal">
-                ${tag}
+        <div class="menu-product-card group relative bg-white rounded-2xl sm:rounded-3xl border-2.5 sm:border-3 border-black shadow-[3.5px_3.5px_0px_#111] hover:shadow-[7px_7px_0px_#E62419] hover:-translate-y-1 transition-all duration-200 overflow-hidden flex flex-col justify-between cursor-pointer" onclick="window.addToCart('${item.id}')">
+          
+          <!-- 1. Full-Bleed Top Image -->
+          <div class="menu-product-img-wrap relative w-full aspect-[4/3] overflow-hidden bg-amber-50 border-b-2 border-black shrink-0">
+            <img 
+              src="${item.image}" 
+              alt="${title}" 
+              decoding="async"
+              class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500 ease-out"
+            >
+            <div class="absolute top-2 start-2 z-10 pointer-events-none">
+              <span class="sticker-badge ${badgeClass} text-[9.5px] sm:text-[11px] px-2 py-0.5 shadow-[1.5px_1.5px_0px_#000]">
+                ${badgeLabel}
               </span>
             </div>
           </div>
 
-          <!-- 4. Clean Starting Price + Touch-Friendly Quick '+' Button (Never collides) -->
-          <div class="pt-2 sm:pt-3 border-t-2 border-black/10 flex items-center justify-between mt-auto gap-1">
-            <span class="font-bungee text-xs sm:text-base text-dabboos-blue shrink-0">
-              ${formattedPrice}
-            </span>
-            <button 
-              onclick="window.addToCart('${item.id}')"
-              class="btn-dabboos py-1.5 px-2.5 sm:px-4 min-h-[36px] text-xs font-bungee flex items-center justify-center gap-1 cursor-pointer shrink-0"
-              aria-label="Add ${title} to cart"
-            >
-              <span>${dict.btn_add}</span>
-            </button>
+          <!-- 2. Card Content -->
+          <div class="menu-product-body p-2.5 sm:p-4 flex flex-col flex-grow justify-between text-start">
+            <div>
+              <h3 class="font-arabic font-black text-[13px] sm:text-base text-gray-900 leading-snug mb-1 group-hover:text-dabboos-red transition-colors line-clamp-1">
+                ${title}
+              </h3>
+              <p class="font-arabic text-[10.5px] sm:text-xs text-gray-500 font-semibold leading-tight mb-2.5 line-clamp-2">
+                ${tag}
+              </p>
+            </div>
+
+            <!-- 3. Pricing & Add Action Bar -->
+            <div class="pt-2 border-t border-black/10 flex items-center justify-between gap-1 mt-auto">
+              <div class="flex items-baseline gap-1" dir="ltr">
+                <span class="font-display text-base sm:text-xl text-dabboos-blue leading-none">
+                  ${formattedPrice}
+                </span>
+                <span class="font-arabic font-extrabold text-[10px] sm:text-xs text-gray-600">
+                  ${dict.currency}
+                </span>
+              </div>
+
+              <button 
+                onclick="event.stopPropagation(); window.addToCart('${item.id}')"
+                class="bg-[#E62419] hover:bg-black text-white hover:text-yellow-300 font-arabic font-black text-[11px] sm:text-xs py-1.5 px-2.5 sm:px-3.5 rounded-xl border-2 border-black shadow-[2px_2px_0px_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none flex items-center gap-1 cursor-pointer transition-all duration-150 shrink-0"
+                aria-label="Add ${title} to cart"
+              >
+                <span class="text-sm font-bold leading-none">+</span>
+                <span>${dict.btn_add}</span>
+              </button>
+            </div>
           </div>
+
         </div>
       `;
     }).join('');
@@ -1713,12 +1746,37 @@ function initMenuPage() {
     if (window.ScrollTrigger) ScrollTrigger.refresh();
   }
 
+  window.setMenuSearch = function(term) {
+    if (searchInput) {
+      searchInput.value = term;
+      searchTerm = term;
+      const clearBtn = document.getElementById('menu-search-clear');
+      if (clearBtn) clearBtn.classList.remove('hidden');
+      renderMenuItems();
+    }
+  };
+
+  window.clearMenuSearch = function() {
+    if (searchInput) {
+      searchInput.value = '';
+      searchTerm = '';
+      const clearBtn = document.getElementById('menu-search-clear');
+      if (clearBtn) clearBtn.classList.add('hidden');
+      renderMenuItems();
+    }
+  };
+
   window.renderMenuItems = renderMenuItems;
   renderMenuItems();
 
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       searchTerm = e.target.value.trim();
+      const clearBtn = document.getElementById('menu-search-clear');
+      if (clearBtn) {
+        if (searchTerm.length > 0) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
       if (searchTerm.length > 0 && activeCategory !== 'all') {
         activeCategory = 'all';
         categoryTabs.forEach((t) => {

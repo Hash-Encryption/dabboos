@@ -1056,47 +1056,109 @@
          ======================================================================= -->
     <div id="menu-view" style="display: none;" class="min-h-screen pt-28 pb-20 bg-dabboos-cream">
       
-      <!-- Top Banner in Royal Blue -->
-      <div class="bg-dabboos-pattern text-white py-10 px-4 sm:px-8 border-b-4 border-black relative overflow-hidden">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+      <!-- Top Banner in Royal Blue & Streetwear Flavor -->
+      <div class="relative bg-gradient-to-r from-[#0A1996] via-[#1224B8] to-[#0A1996] text-white py-8 sm:py-12 px-4 sm:px-8 border-b-4 border-black overflow-hidden">
+        
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
           
-          <div class="text-start">
-            <div class="inline-flex items-center gap-2 mb-2">
-              <span data-i18n="menu_badge" class="sticker-badge sticker-badge-yellow text-xs">OFFICIAL RESTAURANT MENU</span>
-              <span data-i18n="menu_fresh" class="font-arabic text-xs font-bold text-yellow-300">طازج يومياً 100%</span>
+          <!-- Banner Text & Badges -->
+          <div class="text-start max-w-2xl">
+            <div class="inline-flex items-center gap-2 mb-2.5 flex-wrap">
+              <span data-i18n="menu_badge" class="sticker-badge sticker-badge-yellow text-xs font-bungee" dir="ltr">
+                ★ OFFICIAL RESTAURANT MENU ★
+              </span>
+              <span class="font-arabic text-xs font-bold bg-white/20 border border-white/30 text-yellow-300 px-2.5 py-0.5 rounded-full">
+                🔥 طازج يومياً 100%
+              </span>
             </div>
-            <h1 data-i18n="menu_title" class="font-arabic font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-2">
-              منيو دبّوس — DABBOOS MENU
+
+            <h1 data-i18n="menu_title" class="font-arabic font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight mb-2 drop-shadow-[2px_3px_0px_#000]">
+              منيو دبّوس — عالم القرمشة!
             </h1>
-            <p data-i18n="menu_desc" class="font-arabic text-sm sm:text-base text-gray-200 font-bold max-w-xl">
-              تصفح أصنافنا المقرمشة: البرجر، التندرز، الصاج، الأرز، والبوكسات العائلية.
+
+            <p data-i18n="menu_desc" class="font-arabic text-sm sm:text-base text-yellow-300 font-bold max-w-xl leading-relaxed">
+              تصفح 22 وجبة وساندوتش محضرة يدوياً عند الطلب بأسرار تتبيلة الـ 48 ساعة وصوصات دبّوس النارية!
             </p>
+
+            <!-- 3 Trust Chips -->
+            <div class="flex flex-wrap items-center gap-2 mt-4">
+              <span class="bg-black/40 border border-white/20 text-white text-[11px] sm:text-xs px-3 py-1 rounded-full font-arabic font-bold flex items-center gap-1.5">
+                <span>🔥</span> <span>تحضير طازج يومياً</span>
+              </span>
+              <span class="bg-black/40 border border-white/20 text-white text-[11px] sm:text-xs px-3 py-1 rounded-full font-arabic font-bold flex items-center gap-1.5">
+                <span>🛵</span> <span>توصيل سريع ومباشر</span>
+              </span>
+              <span class="bg-black/40 border border-white/20 text-white text-[11px] sm:text-xs px-3 py-1 rounded-full font-arabic font-bold flex items-center gap-1.5">
+                <span>📦</span> <span>تغليف حراري يحفظ القرمشة</span>
+              </span>
+            </div>
           </div>
 
-          <!-- Real-Time Search Bar -->
-          <div class="w-full md:w-96 relative">
-            <input 
-              type="text" 
-              id="menu-search-input" 
-              data-i18n-placeholder="menu_search_placeholder"
-              placeholder="ابحث عن صنف (مثلاً: هريسة، تندر، بوكس)..."
-              class="w-full py-3.5 ps-11 pe-4 rounded-2xl bg-white text-gray-900 font-arabic font-bold text-sm border-3 border-black shadow-[4px_4px_0px_#111] focus:outline-none focus:ring-2 focus:ring-dabboos-yellow placeholder-gray-400"
-            >
-            <span class="absolute start-3.5 top-1/2 -translate-y-1/2 text-lg text-gray-500">🔍</span>
+          <!-- Real-Time Neo-Brutalist Search Box Card -->
+          <div class="w-full lg:w-[380px] bg-[#FFFDF9] text-gray-900 p-4 rounded-2xl sm:rounded-3xl border-3 border-black shadow-[6px_6px_0px_#000] shrink-0">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-arabic font-black text-xs sm:text-sm text-gray-800 flex items-center gap-1.5">
+                <span>🔍</span> <span>ابحث في قائمة الطعام</span>
+              </span>
+              <span id="menu-items-count-badge" class="bg-dabboos-red text-white text-[10px] font-black px-2 py-0.5 rounded-full border border-black shadow-[1px_1px_0px_#000]">
+                22 صنف
+              </span>
+            </div>
+
+            <div class="relative flex items-center">
+              <input 
+                type="text" 
+                id="menu-search-input" 
+                data-i18n-placeholder="menu_search_placeholder"
+                placeholder="ابحث عن صنف (مثلاً: هريسة، تندر، بوكس)..."
+                class="w-full py-2.5 ps-9 pe-8 rounded-xl bg-gray-100 text-gray-900 font-arabic font-bold text-xs sm:text-sm border-2 border-black focus:outline-none focus:bg-white focus:ring-2 focus:ring-yellow-400 placeholder-gray-400 transition-all"
+              >
+              <span class="absolute start-2.5 text-sm text-gray-500 pointer-events-none">🔍</span>
+              <button 
+                id="menu-search-clear" 
+                onclick="window.clearMenuSearch()" 
+                class="absolute end-2.5 text-gray-400 hover:text-black font-black text-xs hidden cursor-pointer p-1"
+                aria-label="Clear Search"
+              >
+                ✕
+              </button>
+            </div>
+
+            <!-- Quick Search Suggestion Pills -->
+            <div class="flex items-center gap-1.5 mt-2.5 flex-wrap">
+              <span class="font-arabic text-[10.5px] font-bold text-gray-500">سريع:</span>
+              <button type="button" onclick="window.setMenuSearch('هريسة')" class="text-[10.5px] font-arabic font-bold bg-amber-50 hover:bg-yellow-300 text-gray-800 px-2 py-0.5 rounded-lg border border-black/30 transition-colors cursor-pointer">هريسة 🔥</button>
+              <button type="button" onclick="window.setMenuSearch('تندر')" class="text-[10.5px] font-arabic font-bold bg-amber-50 hover:bg-yellow-300 text-gray-800 px-2 py-0.5 rounded-lg border border-black/30 transition-colors cursor-pointer">تندر 🍗</button>
+              <button type="button" onclick="window.setMenuSearch('صاج')" class="text-[10.5px] font-arabic font-bold bg-amber-50 hover:bg-yellow-300 text-gray-800 px-2 py-0.5 rounded-lg border border-black/30 transition-colors cursor-pointer">صاج 🌯</button>
+              <button type="button" onclick="window.setMenuSearch('بوكس')" class="text-[10.5px] font-arabic font-bold bg-amber-50 hover:bg-yellow-300 text-gray-800 px-2 py-0.5 rounded-lg border border-black/30 transition-colors cursor-pointer">بوكس 📦</button>
+            </div>
+
           </div>
 
         </div>
       </div>
 
       <!-- Sticky Category Tabs Navigation Bar (Pinned below 60px mobile / 80px desktop header) -->
-      <div class="sticky top-[60px] md:top-[80px] z-40 bg-dabboos-cream/95 backdrop-blur-md py-2.5 sm:py-3.5 px-3 sm:px-8 border-b-2 border-black/10 overflow-x-auto no-scrollbar" style="-webkit-overflow-scrolling: touch; scrollbar-width: none;">
+      <div class="sticky top-[60px] md:top-[80px] z-40 bg-dabboos-cream/95 backdrop-blur-md py-2.5 sm:py-3.5 px-3 sm:px-8 border-b-2.5 border-black/20 overflow-x-auto no-scrollbar shadow-sm" style="-webkit-overflow-scrolling: touch; scrollbar-width: none;">
         <div id="category-tabs-container" class="max-w-7xl mx-auto flex items-center gap-2 sm:gap-3 flex-nowrap">
-          <button class="category-tab-btn active" data-cat="all" data-i18n="tab_all">🔥 الكل (جميع الأصناف)</button>
-          <button class="category-tab-btn" data-cat="burgers" data-i18n="tab_burgers">🍔 البرجر</button>
-          <button class="category-tab-btn" data-cat="crispy" data-i18n="tab_crispy">🍗 المقرمشات والتندرز</button>
-          <button class="category-tab-btn" data-cat="saj" data-i18n="tab_saj">🌯 الصاج والتويستر</button>
-          <button class="category-tab-btn" data-cat="rice" data-i18n="tab_rice">🍛 الأرز والمكرونة</button>
-          <button class="category-tab-btn" data-cat="sides" data-i18n="tab_sides">🍟 الجانبية والبوكسات</button>
+          <button class="category-tab-btn active" data-cat="all">
+            <span>🔥</span> <span data-i18n="tab_all">الكل</span> <span class="tab-count-badge">22</span>
+          </button>
+          <button class="category-tab-btn" data-cat="burgers">
+            <span>🍔</span> <span data-i18n="tab_burgers">البرجر</span> <span class="tab-count-badge">6</span>
+          </button>
+          <button class="category-tab-btn" data-cat="crispy">
+            <span>🍗</span> <span data-i18n="tab_crispy">المقرمشات</span> <span class="tab-count-badge">5</span>
+          </button>
+          <button class="category-tab-btn" data-cat="saj">
+            <span>🌯</span> <span data-i18n="tab_saj">الصاج</span> <span class="tab-count-badge">3</span>
+          </button>
+          <button class="category-tab-btn" data-cat="rice">
+            <span>🍛</span> <span data-i18n="tab_rice">الأرز والمكرونة</span> <span class="tab-count-badge">4</span>
+          </button>
+          <button class="category-tab-btn" data-cat="sides">
+            <span>🍟</span> <span data-i18n="tab_sides">الجانبية والبوكسات</span> <span class="tab-count-badge">4</span>
+          </button>
         </div>
       </div>
 
