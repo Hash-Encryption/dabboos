@@ -203,7 +203,7 @@
       </a>
 
       <!-- Action Buttons: Refined Padding & Font with Instant Language Switcher -->
-      <div class="flex items-center gap-1 sm:gap-2 md:gap-3" dir="ltr">
+      <div class="flex items-center gap-1 sm:gap-2 md:gap-3">
         
         <!-- Back to Home Button (Visible in Menu View) -->
         <button id="nav-back-home" class="hidden btn-dabboos-yellow sticker-badge py-1.5 px-2 md:py-2 md:px-3 text-xs font-bungee flex items-center gap-1 cursor-pointer">
@@ -212,14 +212,14 @@
         </button>
 
         <!-- Compact Order Button (Switches to Menu) -->
-        <button onclick="window.switchView('menu')" class="btn-dabboos py-1.5 px-2.5 sm:px-3 md:py-2 md:px-4 text-xs font-bungee flex items-center gap-1 cursor-pointer">
-          <span data-i18n="nav_order">ORDER</span>
-          <span data-i18n="nav_order_now" class="hidden sm:inline"> NOW</span>
+        <button onclick="window.switchView('menu')" class="btn-dabboos py-1.5 px-2.5 sm:px-3 md:py-2 md:px-4 text-xs font-bungee flex items-center gap-1 cursor-pointer shadow-[2px_2px_0px_#000]">
+          <span>🔥</span>
+          <span data-i18n="nav_order" class="font-arabic font-extrabold text-xs">اطلب الآن</span>
         </button>
 
         <!-- Direct Full Menu Action Button (Opens Menu Page) -->
         <button id="header-direct-menu-btn" onclick="window.switchView('menu')" class="btn-dabboos-yellow sticker-badge py-1.5 px-2 sm:px-2.5 md:py-2 md:px-3 text-xs md:text-sm font-bungee flex items-center gap-1 cursor-pointer" aria-label="Open Full Menu">
-          <span data-i18n="nav_menu">MENU</span>
+          <span data-i18n="nav_menu" class="font-arabic font-extrabold text-xs">المنيو</span>
           <span>🍔</span>
         </button>
 
@@ -328,7 +328,7 @@
         <!-- Centerpiece: Signature Crispy Burger Cutout (Clean Cutout, NO dark box) -->
         <div class="relative z-10 flex flex-col items-center justify-center my-auto px-4">
           
-          <div id="hero-burger-centerpiece" class="relative max-w-[320px] sm:max-w-md md:max-w-xl w-full mx-auto cursor-pointer group flex flex-col items-center justify-center">
+          <div id="hero-burger-centerpiece" class="relative max-w-[320px] sm:max-w-md md:max-w-xl w-full mx-auto cursor-pointer group flex flex-col items-center justify-center min-h-[220px] sm:min-h-[320px] md:min-h-[440px]">
             
             <!-- Rising Steam Puffs -->
             <div class="absolute -top-8 md:-top-12 left-1/2 -translate-x-1/2 flex gap-6 md:gap-8 pointer-events-none z-20" aria-hidden="true">

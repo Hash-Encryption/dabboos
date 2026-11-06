@@ -2,6 +2,8 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.log
-*.png
 .env
 .cache/
+# Ignore root test screenshots only
+audit_*.png
+screenshot_*.png
