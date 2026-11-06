@@ -934,6 +934,11 @@ function initMatterPhysicsFooter() {
     mouse.element.removeEventListener('mousewheel', mouse.mousewheel);
     mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
     mouse.element.removeEventListener('wheel', mouse.mousewheel);
+    if (isMobile) {
+      mouse.element.removeEventListener('touchmove', mouse.touchmove);
+      mouse.element.removeEventListener('touchstart', mouse.touchstart);
+      mouse.element.removeEventListener('touchend', mouse.touchend);
+    }
   }
 
   Composite.add(physicsEngine.world, mouseConstraint);
@@ -1135,11 +1140,11 @@ const I18N_DICT = {
     sec6_sticker_2: '🌶️ SECRET 12-SPICE RECIPE',
     footer_drop_btn: '🌶️ أسقط مكونات إضافية',
     footer_drop_hint: '(اضغط وأسقط مكونات إضافية، والعب بها!)',
-    footer_nav_home: 'HOME',
-    footer_nav_menu: 'FULL MENU',
-    footer_nav_burgers: 'BURGERS',
-    footer_nav_fries: 'LOADED FRIES',
-    footer_nav_location: '04. LOCATION',
+    footer_nav_home: 'الرئيسية',
+    footer_nav_menu: 'المنيو الكامل',
+    footer_nav_burgers: 'البرجر',
+    footer_nav_fries: 'البطاطس',
+    footer_nav_location: 'موقع الفرع والتوصيل',
     footer_copy: '© 2026 DABBOOS RESTAURANT — ALL RIGHTS RESERVED.',
     footer_passion: 'صنع بشغف لعشاق القرمشة والنكهة النارية 🔥',
     footer_tagline: 'CRAFTED FOR FLAVOR ADDICTS',
@@ -1252,7 +1257,7 @@ const I18N_DICT = {
     footer_nav_menu: 'FULL MENU',
     footer_nav_burgers: 'BURGERS',
     footer_nav_fries: 'LOADED FRIES',
-    footer_nav_location: '04. LOCATION',
+    footer_nav_location: 'LOCATION & DELIVERY',
     footer_copy: '© 2026 DABBOOS RESTAURANT — ALL RIGHTS RESERVED.',
     footer_passion: 'CRAFTED FOR FLAVOR ADDICTS 🔥',
     footer_tagline: 'AUTHENTIC STREET FOOD',

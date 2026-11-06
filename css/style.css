@@ -710,3 +710,14 @@ html[dir="ltr"] .i18n-dir-align {
   text-align: left;
   direction: ltr;
 }
+
+/* Mobile Touch Optimization & Smooth Native Scrolling */
+#physics-canvas-container canvas {
+  touch-action: pan-y !important;
+}
+
+@media (max-width: 640px) {
+  .hero-corner-card {
+    min-height: auto !important;
+  }
+}

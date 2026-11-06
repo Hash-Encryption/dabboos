@@ -7,3 +7,4 @@ Thumbs.db
 # Ignore root test screenshots only
 audit_*.png
 screenshot_*.png
+m_*.png

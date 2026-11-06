@@ -217,8 +217,8 @@
           <span data-i18n="nav_order" class="font-arabic font-extrabold text-xs">اطلب الآن</span>
         </button>
 
-        <!-- Direct Full Menu Action Button (Opens Menu Page) -->
-        <button id="header-direct-menu-btn" onclick="window.switchView('menu')" class="btn-dabboos-yellow sticker-badge py-1.5 px-2 sm:px-2.5 md:py-2 md:px-3 text-xs md:text-sm font-bungee flex items-center gap-1 cursor-pointer" aria-label="Open Full Menu">
+        <!-- Direct Full Menu Action Button (Hidden on small mobile to give breathing room) -->
+        <button id="header-direct-menu-btn" onclick="window.switchView('menu')" class="hidden sm:flex btn-dabboos-yellow sticker-badge py-1.5 px-2 sm:px-2.5 md:py-2 md:px-3 text-xs md:text-sm font-bungee items-center gap-1 cursor-pointer" aria-label="Open Full Menu">
           <span data-i18n="nav_menu" class="font-arabic font-extrabold text-xs">المنيو</span>
           <span>🍔</span>
         </button>
@@ -456,32 +456,63 @@
 
         </div>
 
-        <!-- Bottom Editorial Cards (Stacked neatly on mobile) -->
-        <div class="relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-8 pt-8 md:pt-16 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-3 sm:gap-6">
+        <!-- Bottom Editorial Cards (Clean, Responsive Mobile-First Layout) -->
+        <div class="relative z-20 max-w-7xl mx-auto w-full px-3 sm:px-8 pt-4 sm:pt-8 md:pt-16 pb-2">
           
-          <div class="hero-corner-card w-full sm:max-w-xs bg-white p-3 sm:p-4 rounded-xl md:rounded-2xl border-2 md:border-3 border-black shadow-[3px_3px_0px_#111] text-start">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="w-2.5 h-2.5 rounded-full bg-dabboos-red"></span>
-              <span data-i18n="hero_box1_title" class="font-bungee text-[10px] md:text-xs text-dabboos-red tracking-wider">SECRET BRINE RECIPE</span>
+          <!-- Mobile 2-column compact layout (< sm) -->
+          <div class="flex flex-col sm:hidden w-full gap-2">
+            <div class="flex items-center justify-center gap-1.5 animate-bounce py-0.5 text-center">
+              <span data-i18n="hero_scroll" class="font-bungee text-[9px] tracking-widest text-dabboos-red">SCROLL TO DEVOUR</span>
+              <span class="text-xs text-dabboos-red">▼</span>
             </div>
-            <p data-i18n="hero_box1_desc" class="text-[11px] md:text-xs font-bold text-gray-800 leading-snug">
-              Double smashed chicken/beef, 48-hr spice brine, toasted golden brioche & signature Dabboos hot sauce.
-            </p>
+            <div class="grid grid-cols-2 gap-2 w-full">
+              <div class="hero-corner-card bg-white p-2.5 rounded-xl border-2 border-black shadow-[2px_2px_0px_#111] text-start">
+                <div class="flex items-center gap-1.5 mb-1">
+                  <span class="w-2 h-2 rounded-full bg-dabboos-red shrink-0"></span>
+                  <span data-i18n="hero_box1_title" class="font-bungee text-[9px] text-dabboos-red tracking-wider truncate">SECRET BRINE</span>
+                </div>
+                <p data-i18n="hero_box1_desc" class="text-[9.5px] font-bold text-gray-800 leading-tight line-clamp-2">
+                  دجاج ولحم سماش طازج متبل لمدة 48 ساعة في خلطتنا السرية.
+                </p>
+              </div>
+              <div class="hero-corner-card bg-white p-2.5 rounded-xl border-2 border-black shadow-[2px_2px_0px_#111] text-start">
+                <div class="flex items-center gap-1.5 mb-1">
+                  <span class="w-2 h-2 rounded-full bg-dabboos-yellow shrink-0"></span>
+                  <span data-i18n="hero_box2_title" class="font-arabic font-extrabold text-[9.5px] text-dabboos-blue tracking-wider truncate">شيدر معتقة ذائبة</span>
+                </div>
+                <p data-i18n="hero_box2_desc" class="text-[9.5px] font-bold text-gray-800 leading-tight line-clamp-2 font-arabic">
+                  جبنة شيدر معتقة وذائبة، ومكونات طازجة يومياً بدون أي تهاون!
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div class="flex flex-col items-center text-center animate-bounce py-1">
-            <span data-i18n="hero_scroll" class="font-bungee text-[10px] tracking-widest text-dabboos-red">SCROLL TO DEVOUR</span>
-            <span class="text-sm md:text-base text-dabboos-red">▼</span>
-          </div>
-
-          <div class="hero-corner-card w-full sm:max-w-xs bg-white p-3 sm:p-4 rounded-xl md:rounded-2xl border-2 md:border-3 border-black shadow-[3px_3px_0px_#111] text-start">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="w-2.5 h-2.5 rounded-full bg-dabboos-yellow"></span>
-              <span data-i18n="hero_box2_title" class="font-arabic font-extrabold text-[11px] md:text-xs text-dabboos-blue tracking-wider">شيدر معتقة ذائبة</span>
+          <!-- Desktop layout (sm and up) -->
+          <div class="hidden sm:flex flex-row justify-between items-end gap-4 sm:gap-6 w-full">
+            <div class="hero-corner-card sm:max-w-xs bg-white p-3 sm:p-4 rounded-xl md:rounded-2xl border-2 md:border-3 border-black shadow-[3px_3px_0px_#111] text-start">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2.5 h-2.5 rounded-full bg-dabboos-red"></span>
+                <span data-i18n="hero_box1_title" class="font-bungee text-[10px] md:text-xs text-dabboos-red tracking-wider">SECRET BRINE RECIPE</span>
+              </div>
+              <p data-i18n="hero_box1_desc" class="text-[11px] md:text-xs font-bold text-gray-800 leading-snug">
+                Double smashed chicken/beef, 48-hr spice brine, toasted golden brioche & signature Dabboos hot sauce.
+              </p>
             </div>
-            <p data-i18n="hero_box2_desc" class="text-[11px] md:text-xs font-bold text-gray-800 leading-snug font-arabic">
-              جبنة شيدر معتقة وذائبة، مخلل منزلي مقرمش، ومكونات طازجة يومياً بدون أي تهاون!
-            </p>
+
+            <div class="flex flex-col items-center text-center animate-bounce py-1">
+              <span data-i18n="hero_scroll" class="font-bungee text-[10px] tracking-widest text-dabboos-red">SCROLL TO DEVOUR</span>
+              <span class="text-sm md:text-base text-dabboos-red">▼</span>
+            </div>
+
+            <div class="hero-corner-card sm:max-w-xs bg-white p-3 sm:p-4 rounded-xl md:rounded-2xl border-2 md:border-3 border-black shadow-[3px_3px_0px_#111] text-start">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2.5 h-2.5 rounded-full bg-dabboos-yellow"></span>
+                <span data-i18n="hero_box2_title" class="font-arabic font-extrabold text-[11px] md:text-xs text-dabboos-blue tracking-wider">شيدر معتقة ذائبة</span>
+              </div>
+              <p data-i18n="hero_box2_desc" class="text-[11px] md:text-xs font-bold text-gray-800 leading-snug font-arabic">
+                جبنة شيدر معتقة وذائبة، مخلل منزلي مقرمش، ومكونات طازجة يومياً بدون أي تهاون!
+              </p>
+            </div>
           </div>
 
         </div>
@@ -492,7 +523,7 @@
       <!-- =====================================================================
            SECTION 2: POLAROID GALLERY
            ===================================================================== -->
-      <section id="gallery-section" class="relative py-24 sm:py-32 px-4 sm:px-8 bg-dabboos-cream overflow-hidden">
+      <section id="gallery-section" class="relative py-14 sm:py-28 px-4 sm:px-8 bg-dabboos-cream overflow-hidden">
         
         <div id="mascot-fry" class="absolute top-4 start-3 sm:top-8 sm:start-8 z-20 pointer-events-none animate-bob-slow">
           <div class="relative w-10 h-10 md:w-16 md:h-16 max-w-[44px] md:max-w-[68px] max-h-[44px] md:max-h-[68px] drop-shadow-[2px_3px_0px_#000]">
@@ -728,14 +759,14 @@
       <!-- =====================================================================
            SECTION 4: MACRO HERO & EXPLODED PARALLAX
            ===================================================================== -->
-      <section class="relative w-full h-[70vh] sm:h-[85vh] overflow-hidden border-y-4 border-black">
+      <section class="relative w-full h-[50vh] sm:h-[80vh] overflow-hidden border-y-4 border-black">
         <img 
           src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1920&q=85" 
           alt="Loaded Saucy Dabboos Burger" 
           decoding="async"
           class="w-full h-full object-cover object-center filter brightness-90 hover:scale-105 transition-transform duration-700"
         >
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8 sm:p-16">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-5 sm:p-14">
           <div class="max-w-4xl text-start">
             <span data-i18n="sec4_macro_badge" class="sticker-badge sticker-badge-yellow text-xs sm:text-sm mb-4 inline-block">
               THE ART OF CRUNCH
@@ -751,7 +782,7 @@
         </div>
       </section>
 
-      <section id="exploded-section" class="relative py-28 sm:py-44 px-4 sm:px-8 bg-dabboos-cream overflow-hidden">
+      <section id="exploded-section" class="relative py-14 sm:py-36 px-4 sm:px-8 bg-dabboos-cream overflow-hidden">
         <div class="max-w-4xl mx-auto text-center relative z-20 pointer-events-none select-none">
           <span data-i18n="sec4_exp_badge" class="sticker-badge sticker-badge-red text-xs sm:text-sm mb-6 inline-block">
             INSIDE THE DABBOOS FORMULA
@@ -796,7 +827,7 @@
         </svg>
       </div>
 
-      <section id="travel-section" class="relative min-h-screen py-24 px-4 sm:px-8 bg-dabboos-pattern text-white overflow-hidden flex flex-col justify-between">
+      <section id="travel-section" class="relative min-h-[500px] sm:min-h-screen py-14 sm:py-24 px-4 sm:px-8 bg-dabboos-pattern text-white overflow-hidden flex flex-col justify-between">
         <div class="max-w-4xl mx-auto text-center relative z-20 mb-6">
           <div class="inline-flex items-center gap-2 mb-4">
             <span data-i18n="sec5_badge" class="sticker-badge sticker-badge-yellow text-xs sm:text-sm font-bungee" dir="ltr">
@@ -895,8 +926,8 @@
       <!-- =====================================================================
            SECTION 6: "FEEL THE CHANGE" EDITORIAL SECTION
            ===================================================================== -->
-      <section id="editorial-section" class="py-28 sm:py-36 px-4 sm:px-8 bg-dabboos-cream overflow-hidden">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+      <section id="editorial-section" class="py-14 sm:py-32 px-4 sm:px-8 bg-dabboos-cream overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 items-center">
           
           <div id="editorial-left" class="flex flex-col items-start text-start">
             <span data-i18n="sec6_badge" class="sticker-badge sticker-badge-red text-xs sm:text-sm mb-4">
@@ -932,11 +963,11 @@
               </div>
             </div>
 
-            <div class="flex flex-wrap items-center gap-4">
-              <button onclick="window.switchView('menu')" class="btn-dabboos text-sm sm:text-base">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+              <button onclick="window.switchView('menu')" class="btn-dabboos text-sm sm:text-base w-full sm:w-auto text-center justify-center">
                 <span data-i18n="sec6_menu_btn">تصفح المنيو الكامل للطلب 🍔</span>
               </button>
-              <a href="https://wa.me/966500000000" target="_blank" rel="noopener" class="btn-dabboos-yellow sticker-badge py-3 px-5 text-xs sm:text-sm font-bungee">
+              <a href="https://wa.me/966500000000" target="_blank" rel="noopener" class="btn-dabboos-yellow sticker-badge py-3 px-5 text-xs sm:text-sm font-bungee w-full sm:w-auto text-center justify-center">
                 <span data-i18n="sec6_whatsapp_btn">💬 طلب واتساب فوري</span>
               </a>
             </div>
@@ -989,17 +1020,17 @@
             </span>
           </div>
 
-          <nav class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-bungee text-xs sm:text-sm text-gray-800" dir="ltr">
-            <a href="#hero-section" data-i18n="footer_nav_home" class="hover:text-dabboos-red transition-colors">HOME</a>
-            <a href="javascript:void(0)" onclick="window.switchView('menu')" data-i18n="footer_nav_menu" class="hover:text-dabboos-red transition-colors">FULL MENU</a>
-            <a href="#gallery-section" data-i18n="footer_nav_burgers" class="hover:text-dabboos-red transition-colors">BURGERS</a>
-            <a href="#gallery-section" data-i18n="footer_nav_fries" class="hover:text-dabboos-red transition-colors">LOADED FRIES</a>
-            <a href="#travel-section" data-i18n="footer_nav_location" class="hover:text-dabboos-red transition-colors">04. LOCATION</a>
+          <nav class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 font-arabic font-extrabold text-xs sm:text-sm text-gray-800">
+            <a href="#hero-section" data-i18n="footer_nav_home" class="hover:text-dabboos-red transition-colors">الرئيسية</a>
+            <a href="javascript:void(0)" onclick="window.switchView('menu')" data-i18n="footer_nav_menu" class="hover:text-dabboos-red transition-colors">المنيو الكامل</a>
+            <a href="#gallery-section" data-i18n="footer_nav_burgers" class="hover:text-dabboos-red transition-colors">البرجر</a>
+            <a href="#gallery-section" data-i18n="footer_nav_fries" class="hover:text-dabboos-red transition-colors">البطاطس</a>
+            <a href="#travel-section" data-i18n="footer_nav_location" class="hover:text-dabboos-red transition-colors">موقع الفرع والتوصيل</a>
           </nav>
         </div>
 
         <!-- Matter.js Interactive 2D Physics Canvas Container -->
-        <div id="physics-canvas-container" class="relative w-full h-[480px] sm:h-[540px]" aria-label="Interactive Falling Food Physics Game">
+        <div id="physics-canvas-container" class="relative w-full h-[400px] sm:h-[540px]" aria-label="Interactive Falling Food Physics Game">
         </div>
 
         <!-- Zero-Clipping Giant DABBOOS Footer Logo (Pure Responsive HTML + CSS) -->
@@ -1007,12 +1038,11 @@
           <h2 class="footer-giant-logo" dir="ltr">DABBOOS</h2>
         </div>
 
-        <!-- Visible Solid Bottom Bar: Height 48px (#111 Black) -->
-        <div class="relative z-20 w-full h-12 bg-dabboos-dark text-white px-4 sm:px-8 border-t-2 border-black flex items-center justify-between">
-          <div class="max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center text-xs text-gray-300 font-sans font-bold">
-            <span data-i18n="footer_copy">© 2026 DABBOOS RESTAURANT — ALL RIGHTS RESERVED.</span>
-            <span data-i18n="footer_passion" class="font-arabic text-yellow-400">صنع بشغف لعشاق القرمشة والنكهة النارية 🔥</span>
-            <span data-i18n="footer_tagline">CRAFTED FOR FLAVOR ADDICTS</span>
+        <!-- Visible Solid Bottom Bar (#111 Black) -->
+        <div class="relative z-20 w-full py-3 bg-dabboos-dark text-white px-4 sm:px-8 border-t-2 border-black flex items-center justify-between">
+          <div class="max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-gray-300 font-sans font-bold text-center sm:text-start">
+            <span data-i18n="footer_copy" dir="ltr" class="order-2 sm:order-1">© 2026 DABBOOS RESTAURANT — ALL RIGHTS RESERVED.</span>
+            <span data-i18n="footer_passion" class="font-arabic text-yellow-400 order-1 sm:order-2">صنع بشغف لعشاق القرمشة والنكهة النارية 🔥</span>
           </div>
         </div>
 
