@@ -240,49 +240,126 @@
   </header>
 
   <!-- =========================================================================
-       FLOATING BLUR MENU OVERLAY (Top-Right Floating Red Card, backdrop-filter: blur(12px))
+       FLOATING BLUR MENU OVERLAY (Tactile Neo-Brutalist Quick Menu Overlay)
        ========================================================================= -->
-  <div id="nav-overlay" class="fixed inset-0 z-[1100] bg-black/60 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+  <div id="nav-overlay" class="fixed inset-0 z-[1100] bg-black/70 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
     <div class="absolute inset-0" onclick="window.toggleNavOverlay(false)"></div>
     
-    <div id="nav-overlay-card" dir="ltr" class="absolute top-24 right-4 sm:right-8 w-[92vw] max-w-md bg-dabboos-red text-white rounded-3xl border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_#000] transform translate-y-4 transition-transform duration-300">
+    <div id="nav-overlay-card" class="absolute top-20 sm:top-24 end-4 sm:end-8 w-[92vw] max-w-[420px] bg-[#E62419] text-white rounded-3xl border-4 border-black p-5 sm:p-6 shadow-[10px_10px_0px_#000] transform translate-y-4 transition-transform duration-300 overflow-hidden">
       
+      <!-- Top Decorative Accent Strip -->
+      <div class="absolute top-0 inset-x-0 h-2 bg-yellow-400 border-b-2 border-black"></div>
+
       <!-- Overlay Header -->
-      <div class="flex items-center justify-between border-b-2 border-white/20 pb-4 mb-5" dir="ltr">
-        <div class="flex items-center gap-2">
-          <span class="font-display text-3xl tracking-wider text-yellow-300">DABBOOS</span>
-          <span data-i18n="overlay_title" class="font-arabic font-extrabold text-xs bg-black/30 px-2.5 py-1 rounded-full">القائمة السريعة</span>
+      <div class="flex items-center justify-between border-b-2 border-black/25 pb-4 mb-4 pt-1">
+        <div class="flex items-center gap-2.5">
+          <span class="font-display text-3xl sm:text-4xl tracking-wider text-yellow-300 drop-shadow-[2px_2px_0px_#000]">DABBOOS</span>
+          <span data-i18n="overlay_title" class="font-arabic font-black text-xs bg-black text-yellow-300 px-3 py-1 rounded-full border border-black shadow-[2px_2px_0px_rgba(0,0,0,0.3)]">
+            القائمة السريعة
+          </span>
         </div>
-        <button onclick="window.toggleNavOverlay(false)" class="w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center font-bold text-xl cursor-pointer border border-white/20" aria-label="Close Menu">
+        <button onclick="window.toggleNavOverlay(false)" class="w-10 h-10 rounded-full bg-yellow-400 hover:bg-white text-black flex items-center justify-center font-black text-lg cursor-pointer border-2 border-black shadow-[2px_2px_0px_#000] hover:rotate-90 transition-all duration-200" aria-label="Close Menu">
           ✕
         </button>
       </div>
 
-      <!-- Links List -->
-      <nav class="flex flex-col gap-2.5 font-bungee text-sm sm:text-base text-start" dir="ltr">
-        <a href="#hero-section" onclick="window.handleNavOverlayClick('home')" class="py-2.5 px-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-between group">
-          <span data-i18n="overlay_home" class="text-white">01. HOME</span>
-          <span data-i18n="overlay_home_sub" class="font-arabic font-bold text-xs text-yellow-300 group-hover:translate-x-[-4px] transition-transform">الصفحة الرئيسية</span>
+      <!-- Links List (Interactive Tactile Cards) -->
+      <nav class="flex flex-col gap-2.5 text-start">
+        
+        <!-- 01. Home -->
+        <a href="#hero-section" onclick="window.handleNavOverlayClick('home')" class="nav-overlay-item group flex items-center justify-between p-3 sm:p-3.5 rounded-2xl bg-[#FFFDF9] text-black border-2 border-black shadow-[3px_3px_0px_#000] hover:shadow-[5px_5px_0px_#000] hover:-translate-y-0.5 hover:bg-yellow-300 transition-all duration-150 cursor-pointer">
+          <div class="flex items-center gap-3 min-w-0">
+            <span class="w-9 h-9 rounded-xl bg-dabboos-red text-white group-hover:bg-black group-hover:text-yellow-300 font-display text-lg flex items-center justify-center border-2 border-black shadow-[1.5px_1.5px_0px_#000] shrink-0 transition-colors">
+              01
+            </span>
+            <div class="flex flex-col text-start min-w-0">
+              <span data-i18n="overlay_home" class="font-arabic font-black text-sm sm:text-base text-gray-900 leading-tight">
+                الصفحة الرئيسية
+              </span>
+              <span data-i18n="overlay_home_sub" class="font-arabic text-[11px] sm:text-xs text-gray-500 group-hover:text-black font-bold truncate transition-colors">
+                البرجر الأسطوري والعروض الحارة
+              </span>
+            </div>
+          </div>
+          <div class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-black group-hover:text-white flex items-center justify-center border border-black/20 group-hover:border-black shrink-0 transition-all">
+            <span class="text-sm font-black transform group-hover:scale-110 group-hover:-translate-x-0.5 transition-transform rtl:rotate-180">→</span>
+          </div>
         </a>
-        <a href="javascript:void(0)" onclick="window.handleNavOverlayClick('menu')" class="py-2.5 px-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-between group">
-          <span data-i18n="overlay_menu" class="text-white">02. FULL MENU</span>
-          <span data-i18n="overlay_menu_sub" class="font-arabic font-bold text-xs text-yellow-300 group-hover:translate-x-[-4px] transition-transform">قائمة الأصناف والأسعار</span>
+
+        <!-- 02. Full Menu -->
+        <a href="javascript:void(0)" onclick="window.handleNavOverlayClick('menu')" class="nav-overlay-item group flex items-center justify-between p-3 sm:p-3.5 rounded-2xl bg-[#FFFDF9] text-black border-2 border-black shadow-[3px_3px_0px_#000] hover:shadow-[5px_5px_0px_#000] hover:-translate-y-0.5 hover:bg-yellow-300 transition-all duration-150 cursor-pointer">
+          <div class="flex items-center gap-3 min-w-0">
+            <span class="w-9 h-9 rounded-xl bg-dabboos-red text-white group-hover:bg-black group-hover:text-yellow-300 font-display text-lg flex items-center justify-center border-2 border-black shadow-[1.5px_1.5px_0px_#000] shrink-0 transition-colors">
+              02
+            </span>
+            <div class="flex flex-col text-start min-w-0">
+              <span data-i18n="overlay_menu" class="font-arabic font-black text-sm sm:text-base text-gray-900 leading-tight">
+                قائمة الطعام والأسعار
+              </span>
+              <span data-i18n="overlay_menu_sub" class="font-arabic text-[11px] sm:text-xs text-gray-500 group-hover:text-black font-bold truncate transition-colors">
+                22 وجبة، برجر، ساندوتش، وبوكسات
+              </span>
+            </div>
+          </div>
+          <div class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-black group-hover:text-white flex items-center justify-center border border-black/20 group-hover:border-black shrink-0 transition-all">
+            <span class="text-sm font-black transform group-hover:scale-110 group-hover:-translate-x-0.5 transition-transform rtl:rotate-180">→</span>
+          </div>
         </a>
-        <a href="#exploded-section" onclick="window.handleNavOverlayClick('spices')" class="py-2.5 px-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-between group">
-          <span data-i18n="overlay_spices" class="text-white">03. OUR SPICES</span>
-          <span data-i18n="overlay_spices_sub" class="font-arabic font-bold text-xs text-yellow-300 group-hover:translate-x-[-4px] transition-transform">خلطة الـ 12 بهار</span>
+
+        <!-- 03. Our Spices -->
+        <a href="#exploded-section" onclick="window.handleNavOverlayClick('spices')" class="nav-overlay-item group flex items-center justify-between p-3 sm:p-3.5 rounded-2xl bg-[#FFFDF9] text-black border-2 border-black shadow-[3px_3px_0px_#000] hover:shadow-[5px_5px_0px_#000] hover:-translate-y-0.5 hover:bg-yellow-300 transition-all duration-150 cursor-pointer">
+          <div class="flex items-center gap-3 min-w-0">
+            <span class="w-9 h-9 rounded-xl bg-dabboos-red text-white group-hover:bg-black group-hover:text-yellow-300 font-display text-lg flex items-center justify-center border-2 border-black shadow-[1.5px_1.5px_0px_#000] shrink-0 transition-colors">
+              03
+            </span>
+            <div class="flex flex-col text-start min-w-0">
+              <span data-i18n="overlay_spices" class="font-arabic font-black text-sm sm:text-base text-gray-900 leading-tight">
+                سر بهارات دبّوس
+              </span>
+              <span data-i18n="overlay_spices_sub" class="font-arabic text-[11px] sm:text-xs text-gray-500 group-hover:text-black font-bold truncate transition-colors">
+                تتبيلة الـ 48 ساعة المقرمشة النارية
+              </span>
+            </div>
+          </div>
+          <div class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-black group-hover:text-white flex items-center justify-center border border-black/20 group-hover:border-black shrink-0 transition-all">
+            <span class="text-sm font-black transform group-hover:scale-110 group-hover:-translate-x-0.5 transition-transform rtl:rotate-180">→</span>
+          </div>
         </a>
-        <a href="#travel-section" onclick="window.handleNavOverlayClick('location')" class="py-2.5 px-4 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-between group">
-          <span data-i18n="overlay_location" class="text-white">04. LOCATION</span>
-          <span data-i18n="overlay_location_sub" class="font-arabic font-bold text-xs text-yellow-300 group-hover:translate-x-[-4px] transition-transform">موقع الفرع والتوصيل</span>
+
+        <!-- 04. Location & Delivery -->
+        <a href="#travel-section" onclick="window.handleNavOverlayClick('location')" class="nav-overlay-item group flex items-center justify-between p-3 sm:p-3.5 rounded-2xl bg-[#FFFDF9] text-black border-2 border-black shadow-[3px_3px_0px_#000] hover:shadow-[5px_5px_0px_#000] hover:-translate-y-0.5 hover:bg-yellow-300 transition-all duration-150 cursor-pointer">
+          <div class="flex items-center gap-3 min-w-0">
+            <span class="w-9 h-9 rounded-xl bg-dabboos-red text-white group-hover:bg-black group-hover:text-yellow-300 font-display text-lg flex items-center justify-center border-2 border-black shadow-[1.5px_1.5px_0px_#000] shrink-0 transition-colors">
+              04
+            </span>
+            <div class="flex flex-col text-start min-w-0">
+              <span data-i18n="overlay_location" class="font-arabic font-black text-sm sm:text-base text-gray-900 leading-tight">
+                موقع الفرع والتوصيل
+              </span>
+              <span data-i18n="overlay_location_sub" class="font-arabic text-[11px] sm:text-xs text-gray-500 group-hover:text-black font-bold truncate transition-colors">
+                فرعنا الرئيسي والتوصيل السريع
+              </span>
+            </div>
+          </div>
+          <div class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-black group-hover:text-white flex items-center justify-center border border-black/20 group-hover:border-black shrink-0 transition-all">
+            <span class="text-sm font-black transform group-hover:scale-110 group-hover:-translate-x-0.5 transition-transform rtl:rotate-180">→</span>
+          </div>
         </a>
+
       </nav>
 
-      <!-- Action Button -->
-      <div class="mt-5 pt-4 border-t-2 border-white/20 flex flex-col gap-3">
-        <button onclick="window.handleNavOverlayClick('menu')" class="btn-dabboos-yellow py-3 w-full text-center text-sm font-bungee cursor-pointer shadow-[3px_3px_0px_#000]">
-          <span data-i18n="overlay_cta">🍔 OPEN FULL MENU & ORDER</span>
+      <!-- Action Button & Trust Footer -->
+      <div class="mt-4 pt-3.5 border-t-2 border-black/20 flex flex-col gap-2">
+        <button onclick="window.handleNavOverlayClick('menu')" class="w-full py-3.5 px-5 bg-dabboos-yellow hover:bg-white text-black font-arabic font-black text-sm sm:text-base rounded-2xl border-3 border-black shadow-[4px_4px_0px_#000] hover:shadow-[6px_6px_0px_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_#000] cursor-pointer transition-all flex items-center justify-center gap-2 group">
+          <span class="text-xl group-hover:scale-125 transition-transform duration-200">🍔</span>
+          <span data-i18n="overlay_cta" class="tracking-wide">تصفح المنيو الكامل واطلب الآن</span>
+          <span class="font-display text-lg transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">⚡</span>
         </button>
+
+        <div class="flex items-center justify-center gap-2 text-white/95 text-[11px] sm:text-xs font-arabic font-bold pt-1">
+          <span class="w-2 h-2 rounded-full bg-yellow-300 animate-pulse"></span>
+          <span data-i18n="overlay_footer_note">توصيل سريع يحفظ القرمشة والحرارة 🛵</span>
+        </div>
       </div>
 
     </div>

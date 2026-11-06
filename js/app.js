@@ -1066,15 +1066,16 @@ const I18N_DICT = {
     nav_order_now: '',
     nav_menu: 'المنيو',
     overlay_title: 'القائمة السريعة',
-    overlay_home: '01. الرئيسية',
-    overlay_home_sub: 'الصفحة الرئيسية',
-    overlay_menu: '02. المنيو الكامل',
-    overlay_menu_sub: 'قائمة الأصناف والأسعار',
-    overlay_spices: '03. سر بهاراتنا',
-    overlay_spices_sub: 'خلطة الـ 12 بهار السرية',
-    overlay_location: '04. موقع الفرع والتوصيل',
-    overlay_location_sub: 'خدمة التوصيل السريع والفرع',
-    overlay_cta: '🍔 تصفح المنيو الكامل واطلب الآن',
+    overlay_home: 'الصفحة الرئيسية',
+    overlay_home_sub: 'البرجر الأسطوري والعروض الحارة',
+    overlay_menu: 'قائمة الطعام والأسعار',
+    overlay_menu_sub: '22 وجبة، برجر، ساندوتش، وبوكسات',
+    overlay_spices: 'سر بهارات دبّوس',
+    overlay_spices_sub: 'تتبيلة الـ 48 ساعة المقرمشة النارية',
+    overlay_location: 'موقع الفرع والتوصيل',
+    overlay_location_sub: 'فرعنا الرئيسي والتوصيل السريع',
+    overlay_cta: 'تصفح المنيو الكامل واطلب الآن',
+    overlay_footer_note: 'توصيل سريع يحفظ القرمشة والحرارة 🛵',
     hero_badge_1: '⚡ مقرمش وسماش طازج',
     hero_badge_2: '🔥 نكهة نارية حارة',
     hero_marquee_badge: 'دبوس — ملوك القرمشة والنكهة النارية!',
@@ -1177,16 +1178,17 @@ const I18N_DICT = {
     nav_order: 'ORDER NOW',
     nav_order_now: '',
     nav_menu: 'MENU',
-    overlay_title: 'QUICK NAVIGATION',
-    overlay_home: '01. HOME',
-    overlay_home_sub: 'MAIN HOME',
-    overlay_menu: '02. FULL MENU',
-    overlay_menu_sub: 'ITEMS & PRICES',
-    overlay_spices: '03. OUR SPICES',
-    overlay_spices_sub: '12-SPICE SECRET BLEND',
-    overlay_location: '04. LOCATION',
-    overlay_location_sub: 'FLAGSHIP & DELIVERY',
-    overlay_cta: '🍔 OPEN FULL MENU & ORDER',
+    overlay_title: 'QUICK MENU',
+    overlay_home: 'MAIN HOME',
+    overlay_home_sub: 'Signature burgers & spicy deals',
+    overlay_menu: 'FULL MENU & PRICES',
+    overlay_menu_sub: '22 meals, burgers, sandwiches & boxes',
+    overlay_spices: 'OUR SECRET SPICES',
+    overlay_spices_sub: '48-hr brine & legendary crispy crunch',
+    overlay_location: 'LOCATION & DELIVERY',
+    overlay_location_sub: 'Flagship spot & fast hot delivery',
+    overlay_cta: 'EXPLORE FULL MENU & ORDER',
+    overlay_footer_note: 'Fast hot delivery keeping maximum crunch 🛵',
     hero_badge_1: '⚡ SMASHED & CRISPY',
     hero_badge_2: '🔥 BOLD SPICY FLAVOR',
     hero_marquee_badge: 'DABBOOS — KINGS OF CRUNCH & FIERY FLAVOR!',
@@ -1302,6 +1304,11 @@ function applyLanguage(lang) {
   window.currentLang = lang;
   document.documentElement.lang = lang;
   document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+  const overlayCard = document.getElementById('nav-overlay-card');
+  if (overlayCard) {
+    overlayCard.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+  }
 
   const dict = I18N_DICT[lang];
   if (!dict) return;
